@@ -31,6 +31,10 @@ models/llm_config.json
 models/web.log
 models/*.log
 
+# 发布素材（文章 / 封面 / 工作台截图）只留在本地，不进仓库
+# 需要重新生成时：python "docs/发布/工具-截图.py"
+docs/发布/
+
 # 大文件：训练好的分类器约 59 MB（超过 GitHub 建议的 50 MB 单文件上限），不随仓库分发。
 # 克隆后跑一次 `python scripts/train_classifier.py` 即可重建；
 # 缺少它时 classify 会退回物理规则并明确告警，其余功能与全量测试均不受影响。
