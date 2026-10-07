@@ -13,6 +13,9 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from spxh.console import ensure_utf8  # noqa: E402
+ensure_utf8()
+
 from spxh.core.dsp import stft_waterfall, welch_psd  # noqa: E402
 from spxh.core.estimate import analyze_signal, compare_with_truth  # noqa: E402
 from spxh.core.synth import SynthConfig, mapping, synthesize  # noqa: E402

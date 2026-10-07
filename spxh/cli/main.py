@@ -10,6 +10,7 @@ from typing import Any, Optional, Sequence
 import numpy as np
 
 from spxh import __version__
+from spxh.console import ensure_utf8
 from spxh.core.classify import classify_signal
 from spxh.core.classify.model import DEFAULT_MODEL_DIR
 from spxh.core.dsp import stft_waterfall, welch_psd
@@ -763,6 +764,8 @@ def _cmd_narrate(args) -> int:
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
+    # 中文输出在 en-US Windows（cp1252）下会崩，先把标准输出切到 UTF-8
+    ensure_utf8()
     parser = build_parser()
     args = parser.parse_args(argv)
     if args.command == "generate":

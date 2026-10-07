@@ -16,6 +16,9 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from spxh.console import ensure_utf8  # noqa: E402
+ensure_utf8()
+
 from spxh.core.classify.model import ModulationClassifier, expected_calibration_error, reliability_curve  # noqa: E402
 from spxh.core.classify.pipeline import classify_signal  # noqa: E402
 from spxh.core.classify.rules import physical_classify  # noqa: E402

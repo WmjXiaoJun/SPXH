@@ -19,6 +19,11 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
 
+    # 中文输出在 en-US Windows（cp1252）下会 UnicodeEncodeError；
+    # 代码侧已有 spxh.console.ensure_utf8() 兜底，这里再显式声明一次。
+    env:
+      PYTHONIOENCODING: utf-8
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4

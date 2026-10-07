@@ -19,6 +19,9 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from spxh.console import ensure_utf8  # noqa: E402
+ensure_utf8()
+
 from spxh.core.demod.filters import fractional_delay  # noqa: E402
 from spxh.core.fec.codec import FEC_MODES, coded_length_bits  # noqa: E402
 from spxh.core.framing.format import build_frame, parse_frame  # noqa: E402

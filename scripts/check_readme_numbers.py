@@ -10,6 +10,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from spxh.console import ensure_utf8  # noqa: E402
+ensure_utf8()
 README = ROOT / "README.md"
 
 _NUM = re.compile(r"\d+(?:\.\d+)?(?:e-?\d+)?")

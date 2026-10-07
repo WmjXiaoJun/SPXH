@@ -1,5 +1,8 @@
 import sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
+
+from spxh.console import ensure_utf8  # noqa: E402
+ensure_utf8()
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
