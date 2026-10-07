@@ -1,5 +1,5 @@
 # SPXH 运行时依赖（核心只需要 numpy + scipy）
-# 完整安装（含开发与机器学习依赖）推荐：python -m pip install -e ".[dev,ml]"
+# 完整安装（含开发、机器学习与出图依赖）推荐：python -m pip install -e ".[dev,ml,plot]"
 numpy>=1.24
 scipy>=1.10
 scikit-learn>=1.3      # M2 调制识别分类器

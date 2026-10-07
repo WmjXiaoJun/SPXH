@@ -4,6 +4,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from spxh.cli.main import main
 
 
@@ -39,6 +41,9 @@ def test_analyze_command_with_truth_sidecar(tmp_path, capsys):
 
 
 def test_analyze_command_plot(tmp_path, capsys):
+    # 出图是可选依赖：缺失时跳过（与 README「缺失时跳过出图，不影响判据」一致），
+    # CI 通过 `.[dev,ml,plot]` 装上 matplotlib，因此该用例在 CI 上真实执行。
+    pytest.importorskip("matplotlib")
     prefix = _generate(tmp_path, capsys)
     plot_path = tmp_path / "spectrum.png"
     assert main(["analyze", str(prefix) + ".sigmf-meta", "--plot", str(plot_path), "--json"]) == 0

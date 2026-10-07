@@ -86,10 +86,10 @@ python -m venv .venv
 # Windows:  .\.venv\Scripts\Activate.ps1
 # Linux/mac: source .venv/bin/activate
 python -m pip install -U pip
-python -m pip install -e ".[dev,ml]"             # 或者：pip install -r requirements.txt
+python -m pip install -e ".[dev,ml,plot]"        # 或者：pip install -r requirements.txt
 ```
 
-> 最小可跑依赖是 **numpy + scipy**；调制识别需要 scikit-learn；出图需要 matplotlib（缺失时脚本会跳过出图，不影响判据）。
+> 最小可跑依赖是 **numpy + scipy**；调制识别需要 scikit-learn（`.[ml]`）；出图需要 matplotlib（`.[plot]`）——缺失时脚本与对应测试会**跳过出图**，不影响判据。
 
 >
 > **⚠️ 分类器模型（59 MB）不随仓库分发。** 克隆后先跑一次重建（约 1 分钟），调制识别才能走 ML 判决：

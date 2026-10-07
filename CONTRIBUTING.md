@@ -15,7 +15,7 @@
 python -m venv .venv
 source .venv/bin/activate          # Windows: .\.venv\Scripts\Activate.ps1
 python -m pip install -U pip
-python -m pip install -e ".[dev,ml]"   # dev=pytest；ml=scikit-learn（分类器）
+python -m pip install -e ".[dev,ml,plot]"   # dev=pytest；ml=scikit-learn；plot=matplotlib（出图）
 ```
 
 测试：

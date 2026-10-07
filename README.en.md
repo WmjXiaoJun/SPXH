@@ -85,10 +85,10 @@ python -m venv .venv
 # Windows:  .\.venv\Scripts\Activate.ps1
 # Linux/mac: source .venv/bin/activate
 python -m pip install -U pip
-python -m pip install -e ".[dev,ml]"             # or: pip install -r requirements.txt
+python -m pip install -e ".[dev,ml,plot]"        # or: pip install -r requirements.txt
 ```
 
-> The minimal runnable dependencies are **numpy + scipy**; modulation recognition needs scikit-learn; plotting needs matplotlib (when it is missing, scripts skip plots without affecting the criteria).
+> The minimal runnable dependencies are **numpy + scipy**; modulation recognition needs scikit-learn (`.[ml]`); plotting needs matplotlib (`.[plot]`) — when it is missing, scripts and the corresponding test **skip plotting** without affecting the criteria.
 
 >
 > **⚠️ The classifier model (59 MB) is not shipped with the repository.** After cloning, rebuild it once (about 1 minute) so modulation recognition can use the ML decision:

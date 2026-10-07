@@ -33,7 +33,7 @@ jobs:
         shell: bash
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e ".[dev,ml]"
+          python -m pip install -e ".[dev,ml,plot]"
 
       # 输出一律重定向到文件：大量 stdout 直接写管道有被打断的风险
       # （本项目的 M9 报告记录过这个坑：pytest 跑到 84% 被管道打断，重定向后 exit 0）。
