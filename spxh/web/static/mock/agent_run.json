@@ -1,0 +1,309 @@
+{
+  "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta",
+  "mode": "llm",
+  "model": "spxh-agent-demo",
+  "goal": "确认这帧是不是 QPSK，符号速率和解调能不能信",
+  "stop_reason": "final",
+  "rounds": [
+    {
+      "index": 1,
+      "assistant_text": "先做参数估计和功率谱，确认信号的基本形态。",
+      "tool_calls": [
+        {
+          "name": "analyze",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta"
+          },
+          "ok": true,
+          "duration_ms": 14,
+          "summary": "Es/N0 10.02 dB；符号速率 999.97 Hz；载频偏移 3.86 Hz",
+          "evidence": {
+            "snr_db": 10.02,
+            "symbol_rate_hz": 999.97,
+            "cfo_hz": 3.86
+          }
+        },
+        {
+          "name": "spectrum",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta"
+          },
+          "ok": true,
+          "duration_ms": 22,
+          "summary": "峰值 1.02 MHz；占用带宽约 1.24 kHz；噪声底 -86.4 dB",
+          "evidence": {
+            "peak_hz": 1020000,
+            "occupied_bw_hz": 1240,
+            "noise_floor_db": -86.4
+          }
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "assistant_text": "",
+      "tool_calls": [
+        {
+          "name": "classify",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta"
+          },
+          "ok": true,
+          "duration_ms": 31,
+          "summary": "调制 qpsk（置信度 0.91，门控 ml，OOD 2.71）",
+          "evidence": {
+            "modulation": "qpsk",
+            "confidence": 0.91,
+            "gate": "ml",
+            "ood_score": 2.71
+          }
+        },
+        {
+          "name": "demod",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta",
+            "max_symbols": 2000
+          },
+          "ok": false,
+          "duration_ms": 88,
+          "summary": "定时环路未锁定：符号速率置信度 0.31 过低，LLR 与 BER 不可信",
+          "evidence": {
+            "lock_timing": false,
+            "carrier_metric": 0.19,
+            "locked_symbols": 0
+          }
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "assistant_text": "帧同步确认 CRC 与载荷；谱相关交叉验证符号速率，然后收尾。",
+      "tool_calls": [
+        {
+          "name": "frame",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta",
+            "blind": true
+          },
+          "ok": true,
+          "duration_ms": 61,
+          "summary": "检出 6 帧；帧头 CRC-8 通过；2 帧载荷 CRC-16 通过（其余尽力而为解析）",
+          "evidence": {
+            "frames": 6,
+            "header_crc_ok": true,
+            "frames_crc_ok": 2,
+            "correlation_peak": 0.97
+          }
+        },
+        {
+          "name": "ssca",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta",
+            "nfft": 256
+          },
+          "ok": true,
+          "duration_ms": 340,
+          "summary": "α 轴最强峰 1000.09 Hz，与符号速率一致（偏差 0.12 Hz）",
+          "evidence": {
+            "alpha_peak_hz": 1000.09,
+            "ridge_offset_hz": 32
+          }
+        }
+      ]
+    }
+  ],
+  "final": {
+    "headline": "qpsk · 符号速率 1000.0 Hz · Es/N0 10.0 dB：识别与帧同步两条独立证据自洽；解调因定时置信度偏低不可信",
+    "text": "参数估计、调制识别与帧同步三条证据互相印证：载频偏移 3.86 Hz、符号速率 999.97 Hz、谱相关 α 峰 1000.09 Hz（偏差 0.12 Hz），调制判定 qpsk 且门控为 ml。唯一不可信的是解调链路 —— 定时环路未锁定（符号速率置信度 0.31），LLR 与 BER 不能用来下结论。",
+    "confidence": 0.72,
+    "sections": [
+      {
+        "id": "signal",
+        "title": "信号与参数",
+        "text": "盲估计给出三项读数，符号速率与谱相关峰一致，可信度较高；SNR 置信度 0.66 属中等。",
+        "evidence": [
+          {
+            "key": "snr_db",
+            "value": 10.02,
+            "unit": "dB",
+            "source": "M1",
+            "confidence": 0.66
+          },
+          {
+            "key": "symbol_rate_hz",
+            "value": 999.97,
+            "unit": "Hz",
+            "source": "M1",
+            "confidence": 0.62
+          },
+          {
+            "key": "cfo_hz",
+            "value": 3.86,
+            "unit": "Hz",
+            "source": "M1",
+            "confidence": 0.81
+          }
+        ]
+      },
+      {
+        "id": "modulation",
+        "title": "调制识别",
+        "text": "分类器给出 qpsk，门控为 ml（未回退、未被拒），OOD 2.71 在正常范围内。",
+        "evidence": [
+          {
+            "key": "modulation",
+            "value": "qpsk",
+            "unit": "",
+            "source": "M2",
+            "confidence": 0.91
+          },
+          {
+            "key": "gate",
+            "value": "ml",
+            "unit": "",
+            "source": "M2",
+            "confidence": 0.91
+          },
+          {
+            "key": "top_probability",
+            "value": 0.91,
+            "unit": "",
+            "source": "M2",
+            "confidence": 0.91
+          },
+          {
+            "key": "ood_score",
+            "value": 2.71,
+            "unit": "",
+            "source": "M2",
+            "confidence": 0.91
+          }
+        ]
+      },
+      {
+        "id": "frame",
+        "title": "帧同步与载荷",
+        "text": "Barker-13 相关峰 0.97 锁到帧起点，检出 6 帧；帧头 CRC-8 通过，载荷 CRC-16 有 2 帧通过。",
+        "evidence": [
+          {
+            "key": "correlation_peak",
+            "value": 0.97,
+            "unit": "",
+            "source": "M5",
+            "confidence": 0.97
+          },
+          {
+            "key": "frames",
+            "value": 6,
+            "unit": "帧",
+            "source": "M5",
+            "confidence": 0.9
+          },
+          {
+            "key": "frames_crc_ok",
+            "value": 2,
+            "unit": "帧",
+            "source": "M5",
+            "confidence": 0.9
+          },
+          {
+            "key": "header_crc_ok",
+            "value": true,
+            "unit": "",
+            "source": "M5",
+            "confidence": 0.95
+          }
+        ]
+      },
+      {
+        "id": "caution",
+        "title": "可信度告警",
+        "text": "解调工具返回 ok=false（定时环路未锁定），因此本轮没有采信任何 BER / LLR 数值；若要给出误码结论，需要先提高符号速率估计置信度或手动指定 modulation/symbol_rate 重解调。",
+        "evidence": []
+      }
+    ],
+    "uncertainties": [
+      "载荷 CRC-16 只有 2/6 帧通过，其余帧的字节只能尽力而为解读。",
+      "解调链路不可信：定时环路未锁定，符号速率置信度仅 0.31。",
+      "本报告是 ?mock=1 的演示数据，与真实案例数值无关。"
+    ],
+    "next_actions": [
+      "用 instrument 模式或手动指定 symbol_rate=1000 重跑 demod，确认锁定后再看 BER。",
+      "对 CRC 未通过的帧打开 blind=1 重试，或检查交织/编码字段。",
+      "关闭 mock（去掉 URL 的 ?mock=1）用真实 /api/agent/run 复核。"
+    ]
+  },
+  "trace_summary": {
+    "rounds": 3,
+    "tool_calls": 6,
+    "tools_used": [
+      "analyze",
+      "spectrum",
+      "classify",
+      "demod",
+      "frame",
+      "ssca"
+    ],
+    "elapsed_ms": 4200,
+    "budget": {
+      "max_rounds": 6,
+      "max_tool_calls": 12,
+      "timeout_s": 120
+    }
+  },
+  "grounding": {
+    "grounded": true,
+    "checked_numbers": 12,
+    "unsupported": []
+  },
+  "evidence": {
+    "signal": [
+      {
+        "key": "snr_db",
+        "value": 10.02,
+        "unit": "dB",
+        "source": "M1",
+        "confidence": 0.66
+      },
+      {
+        "key": "symbol_rate_hz",
+        "value": 999.97,
+        "unit": "Hz",
+        "source": "M1",
+        "confidence": 0.62
+      }
+    ],
+    "classification": [
+      {
+        "key": "modulation",
+        "value": "qpsk",
+        "unit": "",
+        "source": "M2",
+        "confidence": 0.91
+      }
+    ],
+    "frame": [
+      {
+        "key": "frames",
+        "value": 6,
+        "unit": "帧",
+        "source": "M5",
+        "confidence": 0.9
+      }
+    ],
+    "cyclostationary": [
+      {
+        "key": "alpha_peak_hz",
+        "value": 1000.09,
+        "unit": "Hz",
+        "source": "M8",
+        "confidence": 0.7
+      }
+    ]
+  },
+  "prompt_preview": "你是 SPXH 的工具调用代理。可用工具：analyze / spectrum / classify / demod / frame / ssca / cases。\n\n规则：\n1. 每轮只能通过工具拿证据，不许自己编造数字；\n2. 最多 6 轮、12 次工具调用；同一工具 + 同一参数重复调用会被拒绝并记入 warnings；\n3. 收尾时输出 final.headline + sections[].evidence，每个数字都要能追溯到某次工具调用的 evidence。\n\n当前信号：data/demo/qpsk_snr+10.0_000.sigmf-meta\n用户目标：确认这帧是不是 QPSK，符号速率和解调能不能信",
+  "warnings": [
+    "demod 返回 ok=false（定时环路未锁定）：该工具证据不参与最终结论，已降权。",
+    "同工具同参数的重复调用被拒绝 1 次（analyze 与第 1 轮参数完全相同）。"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "path": "data/demo/2fsk_snr+0.0_000.sigmf-meta",
+  "generated_at": "2026-10-05T19:32:20",
+  "mode": "offline",
+  "model": "offline-rule-based",
+  "headline": "2FSK，SNR 约 0.4 dB，符号速率 976.6 Hz（置信度 0.31）；门控降级为物理规则回退，帧同步未锁定，结论仅供定性参考。",
+  "confidence": 0.61,
+  "sections": [
+    {
+      "id": "signal",
+      "title": "信号与参数",
+      "text": "低 SNR 下 M1 的符号速率与载频估计置信度分别只有 0.31 / 0.24，不建议直接引用绝对值。",
+      "evidence": [
+        {
+          "key": "snr_db",
+          "value": 0.42,
+          "unit": "dB",
+          "source": "M1",
+          "confidence": 0.44
+        },
+        {
+          "key": "symbol_rate_hz",
+          "value": 976.63,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.31
+        },
+        {
+          "key": "cfo_hz",
+          "value": 16.91,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.24
+        }
+      ]
+    },
+    {
+      "id": "classify",
+      "title": "识别与门控",
+      "text": "分类置信度 0.418 低于 0.70 阈值，门控从 ml 降级为 fallback，采用物理规则判为 2FSK；2FSK 与 4FSK 概率接近。",
+      "evidence": [
+        {
+          "key": "classify_modulation",
+          "value": "2fsk",
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.418
+        },
+        {
+          "key": "gate",
+          "value": "fallback",
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.418
+        },
+        {
+          "key": "confidence",
+          "value": 0.418,
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.418
+        }
+      ]
+    },
+    {
+      "id": "frame",
+      "title": "帧同步与帧头 CRC",
+      "text": "相关峰不足以锁定帧起点，帧级结果为空；帧头 CRC-8 无法评估。",
+      "evidence": [
+        {
+          "key": "locked",
+          "value": false,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0.9
+        },
+        {
+          "key": "frames",
+          "value": 0,
+          "unit": "帧",
+          "source": "M5",
+          "confidence": 0.9
+        },
+        {
+          "key": "header_crc_ok",
+          "value": null,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0
+        }
+      ]
+    }
+  ],
+  "uncertainties": [
+    "符号速率置信度 0.31，窄带滤波下 976.6 Hz 可能只是伪峰",
+    "占用带宽触到奈奎斯特边缘，噪声底估计可能偏高",
+    "2FSK 与 4FSK 概率接近，调制阶数无法定论"
+  ],
+  "next_actions": [
+    "提高观测时长或换用 10 dB 以上案例复核",
+    "在解调页手动指定 2fsk 与 4fsk 各跑一次，比较 EVM",
+    "打开谱相关页检查 α 谐波结构以区分 2FSK / 4FSK"
+  ],
+  "prompt_preview": "[系统] 离线确定性渲染。\n[证据] M1: snr_db=0.42, symbol_rate_hz=976.63(0.31), cfo_hz=16.91(0.24)\n        M2: modulation=2fsk, gate=fallback, confidence=0.418\n        M5: locked=false, frames=0\n[要求] 明确指出所有低置信度字段，不得把它们写成确定结论。",
+  "warnings": [
+    "LLM 调用失败：SPXH_LLM_API_KEY 未配置，已降级为 offline 确定性渲染"
+  ]
+}

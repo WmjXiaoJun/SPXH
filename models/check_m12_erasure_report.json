@@ -1,0 +1,82 @@
+{
+  "updated_at": "2026-10-06T01:46:51",
+  "rows": [
+    {
+      "snr_db": 7.0,
+      "frames": 16,
+      "plain_frames": 11,
+      "plain_crc": 3,
+      "erasure_frames": 11,
+      "erasure_crc": 3,
+      "plain_rate": 0.2727,
+      "erasure_rate": 0.2727
+    },
+    {
+      "snr_db": 8.0,
+      "frames": 16,
+      "plain_frames": 13,
+      "plain_crc": 10,
+      "erasure_frames": 13,
+      "erasure_crc": 10,
+      "plain_rate": 0.7692,
+      "erasure_rate": 0.7692
+    },
+    {
+      "snr_db": 9.0,
+      "frames": 16,
+      "plain_frames": 16,
+      "plain_crc": 15,
+      "erasure_frames": 16,
+      "erasure_crc": 15,
+      "plain_rate": 0.9375,
+      "erasure_rate": 0.9375
+    },
+    {
+      "snr_db": 10.0,
+      "frames": 16,
+      "plain_frames": 16,
+      "plain_crc": 16,
+      "erasure_frames": 16,
+      "erasure_crc": 16,
+      "plain_rate": 1.0,
+      "erasure_rate": 1.0
+    },
+    {
+      "snr_db": 11.0,
+      "frames": 16,
+      "plain_frames": 16,
+      "plain_crc": 16,
+      "erasure_frames": 16,
+      "erasure_crc": 16,
+      "plain_rate": 1.0,
+      "erasure_rate": 1.0
+    },
+    {
+      "snr_db": 12.0,
+      "frames": 16,
+      "plain_frames": 16,
+      "plain_crc": 16,
+      "erasure_frames": 16,
+      "erasure_crc": 16,
+      "plain_rate": 1.0,
+      "erasure_rate": 1.0
+    }
+  ],
+  "checks": [
+    {
+      "name": "把 LLR 擦除接进链路后，RS 的 90% CRC 门限不升高（允许同值）",
+      "value": 0.0,
+      "target": 0.0,
+      "pass": true
+    },
+    {
+      "name": "AWGN 下不虚标擦除（没有连续弱区时擦除数接近 0，避免吃掉纠错预算）",
+      "value": 0,
+      "target": 4,
+      "pass": true
+    }
+  ],
+  "plain_threshold_db": 8.777183600713013,
+  "erasure_threshold_db": 8.777183600713013,
+  "note": "擦除位置由软信息（按 RS 符号的 |LLR| 均值 + 门限）自动给出，不依赖人工标注"
+}

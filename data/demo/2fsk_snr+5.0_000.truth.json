@@ -1,0 +1,228 @@
+{
+  "format_version": 1,
+  "modulation": "2fsk",
+  "symbol_rate": 1000.0,
+  "sample_rate": 8000.0,
+  "sps": 8,
+  "snr_db": 5.0,
+  "cfo_hz": 0.0,
+  "phase_noise_rms_rad": 0.0,
+  "rolloff": 0.35,
+  "span_symbols": 16,
+  "fsk_mod_index": 1.0,
+  "seed": 17,
+  "num_symbols": 4648,
+  "num_bits": 4648,
+  "pad_bits": 0,
+  "filter_delay_samples": 0.0,
+  "noise_variance": 2.5298221281347035,
+  "frames": [
+    {
+      "index": 0,
+      "header": {
+        "magic": 165,
+        "modulation": "2fsk",
+        "fec": "none",
+        "interleave": false,
+        "payload_len": 64,
+        "reserved": 0
+      },
+      "payload_hex": "73ccafbd55d256d84bb07a1b528835294a913d75be58c88e6263fac2af7c3a5eed732b09c06f063701ecce74375dc56227214fea48309c6d29995aa361fb809c",
+      "payload_len": 64,
+      "crc": 6370,
+      "start_bit": 0,
+      "num_bits": 581,
+      "start_symbol": 0,
+      "num_symbols": 581,
+      "start_sample": 0,
+      "num_samples": 4648
+    },
+    {
+      "index": 1,
+      "header": {
+        "magic": 165,
+        "modulation": "2fsk",
+        "fec": "none",
+        "interleave": false,
+        "payload_len": 64,
+        "reserved": 0
+      },
+      "payload_hex": "317d4f17cfc883bca755c90cdf05ea038aebd89548d30841f19bb55d7f4da99a69f60a289dc46f15c43d65b3ca706dfff46cd0aeb7a214d5bebc196aac3d6a09",
+      "payload_len": 64,
+      "crc": 4709,
+      "start_bit": 581,
+      "num_bits": 581,
+      "start_symbol": 581,
+      "num_symbols": 581,
+      "start_sample": 4648,
+      "num_samples": 4648
+    },
+    {
+      "index": 2,
+      "header": {
+        "magic": 165,
+        "modulation": "2fsk",
+        "fec": "none",
+        "interleave": false,
+        "payload_len": 64,
+        "reserved": 0
+      },
+      "payload_hex": "258388a6084a4a918072b6bf18b7fd9b0428a77cb8f0c50189c2c5b2d570d82d0312d47a9957382a86c29393a1df4276bbeef2682426279177ed2c24a952b073",
+      "payload_len": 64,
+      "crc": 54751,
+      "start_bit": 1162,
+      "num_bits": 581,
+      "start_symbol": 1162,
+      "num_symbols": 581,
+      "start_sample": 9296,
+      "num_samples": 4648
+    },
+    {
+      "index": 3,
+      "header": {
+        "magic": 165,
+        "modulation": "2fsk",
+        "fec": "none",
+        "interleave": false,
+        "payload_len": 64,
+        "reserved": 0
+      },
+      "payload_hex": "99179db8416b76eb12f4c53871df9ed034d1b4578cd1b266ff73dace50650234dc44bc3ef538bb5be26f4aa50054aedced4b0f45e7f94b59683992db027ab6fd",
+      "payload_len": 64,
+      "crc": 26772,
+      "start_bit": 1743,
+      "num_bits": 581,
+      "start_symbol": 1743,
+      "num_symbols": 581,
+      "start_sample": 13944,
+      "num_samples": 4648
+    },
+    {
+      "index": 4,
+      "header": {
+        "magic": 165,
+        "modulation": "2fsk",
+        "fec": "none",
+        "interleave": false,
+        "payload_len": 64,
+        "reserved": 0
+      },
+      "payload_hex": "3ddae5c7063ad690be9a13cf09eea13c25017d28f762a0a86a11ba3fc89a04a9793c263a6952bd838657cbd111a37247c7ba398fa65142a167332338f43fac7a",
+      "payload_len": 64,
+      "crc": 21641,
+      "start_bit": 2324,
+      "num_bits": 581,
+      "start_symbol": 2324,
+      "num_symbols": 581,
+      "start_sample": 18592,
+      "num_samples": 4648
+    },
+    {
+      "index": 5,
+      "header": {
+        "magic": 165,
+        "modulation": "2fsk",
+        "fec": "none",
+        "interleave": false,
+        "payload_len": 64,
+        "reserved": 0
+      },
+      "payload_hex": "b61af9bc8eef3da749faa4ab4042d08ae7d1beec8eb1071f05071d80250ea3e84c1a0e6c9616680448d29dfb31028e4fd1552d0e7c7bde2ba3e7c4f47c1fd257",
+      "payload_len": 64,
+      "crc": 51935,
+      "start_bit": 2905,
+      "num_bits": 581,
+      "start_symbol": 2905,
+      "num_symbols": 581,
+      "start_sample": 23240,
+      "num_samples": 4648
+    },
+    {
+      "index": 6,
+      "header": {
+        "magic": 165,
+        "modulation": "2fsk",
+        "fec": "none",
+        "interleave": false,
+        "payload_len": 64,
+        "reserved": 0
+      },
+      "payload_hex": "357519031672159e647e810bcdac038d4a01a79f2c0552b721937e1a04d74c7d843c8186ad696cd7347d2600214c1359dc791669b8ad4c8cea4f0fc9f0ee2281",
+      "payload_len": 64,
+      "crc": 54649,
+      "start_bit": 3486,
+      "num_bits": 581,
+      "start_symbol": 3486,
+      "num_symbols": 581,
+      "start_sample": 27888,
+      "num_samples": 4648
+    },
+    {
+      "index": 7,
+      "header": {
+        "magic": 165,
+        "modulation": "2fsk",
+        "fec": "none",
+        "interleave": false,
+        "payload_len": 64,
+        "reserved": 0
+      },
+      "payload_hex": "44d6b0c1c170a5055734644bd5d35c3a5f5fcd98848f6a15871dbb5960a7b23fdb6711f0fabcaf01adc43da9dcb20f4b7a9b63dd3313b75ff307f400d43a96a5",
+      "payload_len": 64,
+      "crc": 51378,
+      "start_bit": 4067,
+      "num_bits": 581,
+      "start_symbol": 4067,
+      "num_symbols": 581,
+      "start_sample": 32536,
+      "num_samples": 4648
+    }
+  ],
+  "extras": {
+    "generator": "spxh-m0",
+    "fec": "none",
+    "interleave": false,
+    "es_per_symbol": 8.0,
+    "noise_model": "complex AWGN, sigma^2 = Es/10^(snr_db/10), I/Q 均分",
+    "snr_definition": "10*log10(Es/N0)",
+    "bits_per_symbol": 1,
+    "sample_index_convention": "采样索引基于上采样符号栅格：符号 k 占 [k*sps, (k+1)*sps)；波形数组相对该栅格有 +filter_delay_samples 的偏移",
+    "payloads_hex": [
+      "73ccafbd55d256d84bb07a1b528835294a913d75be58c88e6263fac2af7c3a5eed732b09c06f063701ecce74375dc56227214fea48309c6d29995aa361fb809c",
+      "317d4f17cfc883bca755c90cdf05ea038aebd89548d30841f19bb55d7f4da99a69f60a289dc46f15c43d65b3ca706dfff46cd0aeb7a214d5bebc196aac3d6a09",
+      "258388a6084a4a918072b6bf18b7fd9b0428a77cb8f0c50189c2c5b2d570d82d0312d47a9957382a86c29393a1df4276bbeef2682426279177ed2c24a952b073",
+      "99179db8416b76eb12f4c53871df9ed034d1b4578cd1b266ff73dace50650234dc44bc3ef538bb5be26f4aa50054aedced4b0f45e7f94b59683992db027ab6fd",
+      "3ddae5c7063ad690be9a13cf09eea13c25017d28f762a0a86a11ba3fc89a04a9793c263a6952bd838657cbd111a37247c7ba398fa65142a167332338f43fac7a",
+      "b61af9bc8eef3da749faa4ab4042d08ae7d1beec8eb1071f05071d80250ea3e84c1a0e6c9616680448d29dfb31028e4fd1552d0e7c7bde2ba3e7c4f47c1fd257",
+      "357519031672159e647e810bcdac038d4a01a79f2c0552b721937e1a04d74c7d843c8186ad696cd7347d2600214c1359dc791669b8ad4c8cea4f0fc9f0ee2281",
+      "44d6b0c1c170a5055734644bd5d35c3a5f5fcd98848f6a15871dbb5960a7b23fdb6711f0fabcaf01adc43da9dcb20f4b7a9b63dd3313b75ff307f400d43a96a5"
+    ],
+    "config": {
+      "modulation": "2fsk",
+      "symbol_rate": 1000.0,
+      "sps": 8,
+      "sample_rate": null,
+      "snr_db": 5.0,
+      "cfo_hz": 0.0,
+      "phase_noise_rms_rad": 0.0,
+      "phase_noise_bw_hz": null,
+      "rolloff": 0.35,
+      "span_symbols": 16,
+      "fsk_mod_index": null,
+      "payload_len": 64,
+      "num_frames": 8,
+      "payloads": null,
+      "fec": "none",
+      "interleave": false,
+      "iq_gain_db": 0.0,
+      "iq_phase_deg": 0.0,
+      "dc_offset": [
+        0.0,
+        0.0
+      ],
+      "seed": 17,
+      "keep_clean": true,
+      "sample_rate_effective": 8000.0
+    }
+  }
+}

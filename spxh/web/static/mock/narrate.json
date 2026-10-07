@@ -1,0 +1,154 @@
+{
+  "path": "data/demo/<当前案例>",
+  "generated_at": "2026-10-05T19:34:00",
+  "mode": "llm",
+  "model": "spxh-reporter-demo",
+  "headline": "示例 LLM 报告（?mock=1 全局假数据）：参数估计、识别门控、帧同步 CRC 与谱相关四路证据已对齐，整体置信度 0.72。",
+  "confidence": 0.72,
+  "sections": [
+    {
+      "id": "signal",
+      "title": "信号与参数",
+      "text": "M1 管线给出采样率、时长与三项盲估计；每个值都带 source 与 confidence，报告只引用这些数字，不重新估算。",
+      "evidence": [
+        {
+          "key": "sample_rate",
+          "value": 8000,
+          "unit": "Hz",
+          "source": "M0",
+          "confidence": 1
+        },
+        {
+          "key": "duration_s",
+          "value": 4.356,
+          "unit": "s",
+          "source": "M0",
+          "confidence": 1
+        },
+        {
+          "key": "snr_db",
+          "value": 10.02,
+          "unit": "dB",
+          "source": "M1",
+          "confidence": 0.66
+        },
+        {
+          "key": "cfo_hz",
+          "value": 43.72,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.81
+        },
+        {
+          "key": "symbol_rate_hz",
+          "value": 999.97,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.62
+        }
+      ]
+    },
+    {
+      "id": "modulation",
+      "title": "调制识别",
+      "text": "M2 分类器给出调制结论与门控状态；门控是 ml / fallback / reject 三态，报告必须原样转述，不能把 fallback 写成确定结论。",
+      "evidence": [
+        {
+          "key": "modulation",
+          "value": "qpsk",
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.91
+        },
+        {
+          "key": "gate",
+          "value": "ml",
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.91
+        },
+        {
+          "key": "top_probability",
+          "value": 0.91,
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.91
+        },
+        {
+          "key": "ood_score",
+          "value": 2.71,
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.91
+        }
+      ]
+    },
+    {
+      "id": "frame",
+      "title": "帧同步与载荷",
+      "text": "M5 用 Barker-13 前导锁定帧起点并解出相位模糊，帧头 5 字节含 CRC-8 自校验；载荷 CRC-16-CCITT 未全部通过的帧按尽力而为解析，并进入 warnings。",
+      "evidence": [
+        {
+          "key": "correlation_peak",
+          "value": 0.97,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0.97
+        },
+        {
+          "key": "frames",
+          "value": 6,
+          "unit": "帧",
+          "source": "M5",
+          "confidence": 0.9
+        },
+        {
+          "key": "frames_crc_ok",
+          "value": 2,
+          "unit": "帧",
+          "source": "M5",
+          "confidence": 0.9
+        },
+        {
+          "key": "header_crc_ok",
+          "value": true,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0.95
+        }
+      ]
+    },
+    {
+      "id": "cyclostationary",
+      "title": "谱相关（可解释性）",
+      "text": "M8 在 α 轴上的最强峰应与符号速率一致，脊线偏移给出粗分辨率的载频偏移；两者用于与 M1 交叉验证。",
+      "evidence": [
+        {
+          "key": "alpha_peak_hz",
+          "value": 1000.09,
+          "unit": "Hz",
+          "source": "M8",
+          "confidence": 0.7
+        },
+        {
+          "key": "ridge_offset_hz",
+          "value": 32,
+          "unit": "Hz",
+          "source": "M8",
+          "confidence": 0.4
+        }
+      ]
+    }
+  ],
+  "uncertainties": [
+    "本文件是 ?mock=1 的全局示例报告，数值不针对某个具体案例；真实案例请读 /api/narrate。",
+    "符号速率置信度 0.62 偏低，脉冲成形与多径会带来 1 Hz 级偏差。"
+  ],
+  "next_actions": [
+    "关闭 mock（去掉 URL 的 ?mock=1）用 /api/narrate 取真实报告",
+    "核对 sections[].evidence 的 source 是否都能回溯到 M1/M2/M5/M8",
+    "对 CRC-16 未通过的帧打开 blind=1 重试"
+  ],
+  "prompt_preview": "你是射频频谱分析平台 SPXH 的分析员。下面是从确定性信号处理管线得到的**结构化证据**（每个值都带 source=来源环节、可选 unit/confidence）。请据此写一份中文分析报告。\n\n硬性要求：\n1. 只允许引用证据表里出现的数字；证据缺失就写 null，绝不允许编造或推测数值。\n2. 每个结论都必须能追溯到某条证据（在 sections[].evidence 里带上用到的 key）。\n3. 明确指出不确定性与矛盾（例如置信度低、CRC 未通过、门控是 fallback/reject）。\n\n证据表：\n{\"signal\":[{\"key\":\"snr_db\",\"value\":10.02,\"source\":\"M1\",\"unit\":\"dB\",\"confidence\":0.66}],\"classification\":[{\"key\":\"modulation\",\"value\":\"qpsk\",\"source\":\"M2\",\"confidence\":0.91}],\"frame\":[{\"key\":\"frames\",\"value\":6,\"source\":\"M5\"}],\"cyclostationary\":[{\"key\":\"alpha_peak_hz\",\"value\":1000.09,\"source\":\"M8\",\"unit\":\"Hz\"}]}",
+  "warnings": []
+}

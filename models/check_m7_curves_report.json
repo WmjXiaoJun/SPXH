@@ -1,0 +1,700 @@
+{
+  "updated_at": "2026-10-05T19:34:42",
+  "frames_per_point": 16,
+  "payload_bytes": 60,
+  "snrs": [
+    2.0,
+    4.0,
+    5.0,
+    6.0,
+    7.0,
+    8.0,
+    9.0,
+    10.0,
+    11.0,
+    12.0,
+    13.0,
+    14.0
+  ],
+  "table": {
+    "none": [
+      {
+        "fec": "none",
+        "snr_db": 2.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "none",
+        "snr_db": 4.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "none",
+        "snr_db": 5.0,
+        "frames_generated": 16,
+        "frames": 2,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 60,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "none",
+        "snr_db": 6.0,
+        "frames_generated": 16,
+        "frames": 2,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 104,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "none",
+        "snr_db": 7.0,
+        "frames_generated": 16,
+        "frames": 6,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 284,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "none",
+        "snr_db": 8.0,
+        "frames_generated": 16,
+        "frames": 13,
+        "frames_crc_ok": 1,
+        "crc_rate": 0.07692307692307693,
+        "payload_bytes_total": 720,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "none",
+        "snr_db": 9.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 3,
+        "crc_rate": 0.21428571428571427,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 60,
+        "exact_rate": 0.07142857142857142
+      },
+      {
+        "fec": "none",
+        "snr_db": 10.0,
+        "frames_generated": 16,
+        "frames": 15,
+        "frames_crc_ok": 8,
+        "crc_rate": 0.5333333333333333,
+        "payload_bytes_total": 900,
+        "payload_bytes_exact": 60,
+        "exact_rate": 0.06666666666666667
+      },
+      {
+        "fec": "none",
+        "snr_db": 11.0,
+        "frames_generated": 16,
+        "frames": 16,
+        "frames_crc_ok": 14,
+        "crc_rate": 0.875,
+        "payload_bytes_total": 960,
+        "payload_bytes_exact": 900,
+        "exact_rate": 0.9375
+      },
+      {
+        "fec": "none",
+        "snr_db": 12.0,
+        "frames_generated": 16,
+        "frames": 16,
+        "frames_crc_ok": 16,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 960,
+        "payload_bytes_exact": 960,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "none",
+        "snr_db": 13.0,
+        "frames_generated": 16,
+        "frames": 16,
+        "frames_crc_ok": 16,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 960,
+        "payload_bytes_exact": 960,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "none",
+        "snr_db": 14.0,
+        "frames_generated": 16,
+        "frames": 16,
+        "frames_crc_ok": 16,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 960,
+        "payload_bytes_exact": 960,
+        "exact_rate": 1.0
+      }
+    ],
+    "conv": [
+      {
+        "fec": "conv",
+        "snr_db": 2.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "conv",
+        "snr_db": 4.0,
+        "frames_generated": 16,
+        "frames": 1,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 189,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "conv",
+        "snr_db": 5.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "conv",
+        "snr_db": 6.0,
+        "frames_generated": 16,
+        "frames": 4,
+        "frames_crc_ok": 3,
+        "crc_rate": 0.75,
+        "payload_bytes_total": 232,
+        "payload_bytes_exact": 60,
+        "exact_rate": 0.25862068965517243
+      },
+      {
+        "fec": "conv",
+        "snr_db": 7.0,
+        "frames_generated": 16,
+        "frames": 9,
+        "frames_crc_ok": 6,
+        "crc_rate": 0.6666666666666666,
+        "payload_bytes_total": 472,
+        "payload_bytes_exact": 120,
+        "exact_rate": 0.2542372881355932
+      },
+      {
+        "fec": "conv",
+        "snr_db": 8.0,
+        "frames_generated": 16,
+        "frames": 11,
+        "frames_crc_ok": 9,
+        "crc_rate": 0.8181818181818182,
+        "payload_bytes_total": 600,
+        "payload_bytes_exact": 540,
+        "exact_rate": 0.9
+      },
+      {
+        "fec": "conv",
+        "snr_db": 9.0,
+        "frames_generated": 16,
+        "frames": 13,
+        "frames_crc_ok": 13,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 780,
+        "payload_bytes_exact": 780,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "conv",
+        "snr_db": 10.0,
+        "frames_generated": 16,
+        "frames": 13,
+        "frames_crc_ok": 13,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 780,
+        "payload_bytes_exact": 780,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "conv",
+        "snr_db": 11.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "conv",
+        "snr_db": 12.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "conv",
+        "snr_db": 13.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "conv",
+        "snr_db": 14.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      }
+    ],
+    "rs": [
+      {
+        "fec": "rs",
+        "snr_db": 2.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "rs",
+        "snr_db": 4.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "rs",
+        "snr_db": 5.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "rs",
+        "snr_db": 6.0,
+        "frames_generated": 16,
+        "frames": 5,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 428,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "rs",
+        "snr_db": 7.0,
+        "frames_generated": 16,
+        "frames": 7,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 548,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "rs",
+        "snr_db": 8.0,
+        "frames_generated": 16,
+        "frames": 10,
+        "frames_crc_ok": 8,
+        "crc_rate": 0.8,
+        "payload_bytes_total": 600,
+        "payload_bytes_exact": 240,
+        "exact_rate": 0.4
+      },
+      {
+        "fec": "rs",
+        "snr_db": 9.0,
+        "frames_generated": 16,
+        "frames": 12,
+        "frames_crc_ok": 11,
+        "crc_rate": 0.9166666666666666,
+        "payload_bytes_total": 720,
+        "payload_bytes_exact": 360,
+        "exact_rate": 0.5
+      },
+      {
+        "fec": "rs",
+        "snr_db": 10.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "rs",
+        "snr_db": 11.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "rs",
+        "snr_db": 12.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "rs",
+        "snr_db": 13.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "rs",
+        "snr_db": 14.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      }
+    ],
+    "ccsds": [
+      {
+        "fec": "ccsds",
+        "snr_db": 2.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 4.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 5.0,
+        "frames_generated": 16,
+        "frames": 1,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 92,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 6.0,
+        "frames_generated": 16,
+        "frames": 1,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 92,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 7.0,
+        "frames_generated": 16,
+        "frames": 2,
+        "frames_crc_ok": 2,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 120,
+        "payload_bytes_exact": 120,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 8.0,
+        "frames_generated": 16,
+        "frames": 12,
+        "frames_crc_ok": 8,
+        "crc_rate": 0.6666666666666666,
+        "payload_bytes_total": 689,
+        "payload_bytes_exact": 120,
+        "exact_rate": 0.1741654571843251
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 9.0,
+        "frames_generated": 16,
+        "frames": 12,
+        "frames_crc_ok": 11,
+        "crc_rate": 0.9166666666666666,
+        "payload_bytes_total": 720,
+        "payload_bytes_exact": 120,
+        "exact_rate": 0.16666666666666666
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 10.0,
+        "frames_generated": 16,
+        "frames": 13,
+        "frames_crc_ok": 13,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 780,
+        "payload_bytes_exact": 120,
+        "exact_rate": 0.15384615384615385
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 11.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 12.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 13.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "ccsds",
+        "snr_db": 14.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 14,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 840,
+        "payload_bytes_exact": 840,
+        "exact_rate": 1.0
+      }
+    ],
+    "ldpc": [
+      {
+        "fec": "ldpc",
+        "snr_db": 2.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 4.0,
+        "frames_generated": 16,
+        "frames": 0,
+        "frames_crc_ok": 0,
+        "crc_rate": 0.0,
+        "payload_bytes_total": 0,
+        "payload_bytes_exact": null,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 5.0,
+        "frames_generated": 16,
+        "frames": 4,
+        "frames_crc_ok": 1,
+        "crc_rate": 0.25,
+        "payload_bytes_total": 164,
+        "payload_bytes_exact": 0,
+        "exact_rate": 0.0
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 6.0,
+        "frames_generated": 16,
+        "frames": 9,
+        "frames_crc_ok": 5,
+        "crc_rate": 0.5555555555555556,
+        "payload_bytes_total": 460,
+        "payload_bytes_exact": 60,
+        "exact_rate": 0.13043478260869565
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 7.0,
+        "frames_generated": 16,
+        "frames": 11,
+        "frames_crc_ok": 9,
+        "crc_rate": 0.8181818181818182,
+        "payload_bytes_total": 640,
+        "payload_bytes_exact": 480,
+        "exact_rate": 0.75
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 8.0,
+        "frames_generated": 16,
+        "frames": 13,
+        "frames_crc_ok": 13,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 780,
+        "payload_bytes_exact": 600,
+        "exact_rate": 0.7692307692307693
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 9.0,
+        "frames_generated": 16,
+        "frames": 14,
+        "frames_crc_ok": 13,
+        "crc_rate": 0.9285714285714286,
+        "payload_bytes_total": 780,
+        "payload_bytes_exact": 780,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 10.0,
+        "frames_generated": 16,
+        "frames": 16,
+        "frames_crc_ok": 16,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 960,
+        "payload_bytes_exact": 960,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 11.0,
+        "frames_generated": 16,
+        "frames": 16,
+        "frames_crc_ok": 16,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 960,
+        "payload_bytes_exact": 960,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 12.0,
+        "frames_generated": 16,
+        "frames": 16,
+        "frames_crc_ok": 16,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 960,
+        "payload_bytes_exact": 960,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 13.0,
+        "frames_generated": 16,
+        "frames": 16,
+        "frames_crc_ok": 16,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 960,
+        "payload_bytes_exact": 960,
+        "exact_rate": 1.0
+      },
+      {
+        "fec": "ldpc",
+        "snr_db": 14.0,
+        "frames_generated": 16,
+        "frames": 16,
+        "frames_crc_ok": 16,
+        "crc_rate": 1.0,
+        "payload_bytes_total": 960,
+        "payload_bytes_exact": 960,
+        "exact_rate": 1.0
+      }
+    ]
+  },
+  "thresholds": {
+    "none": 11.2,
+    "conv": 8.45,
+    "rs": 8.857142857142858,
+    "ccsds": 6.9,
+    "ldpc": 7.45
+  },
+  "best_code": "ccsds",
+  "gain_db": 4.299999999999999
+}

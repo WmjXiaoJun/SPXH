@@ -1,0 +1,103 @@
+{
+  "path": "data/demo/16qam_snr+20.0_000.sigmf-meta",
+  "generated_at": "2026-10-05T19:31:10",
+  "mode": "offline",
+  "model": "offline-rule-based",
+  "headline": "16QAM，SNR 约 19.9 dB，符号速率 1000.2 Hz，载频偏移 −120.5 Hz；分类置信度 0.95，帧头 CRC-8 通过，链路质量良好。",
+  "confidence": 0.86,
+  "sections": [
+    {
+      "id": "signal",
+      "title": "信号与参数",
+      "text": "M1 估计 SNR 19.87 dB、符号速率 1000.24 Hz、载频偏移 −120.52 Hz，三项置信度均在 0.7 以上，参数可信度高。",
+      "evidence": [
+        {
+          "key": "snr_db",
+          "value": 19.87,
+          "unit": "dB",
+          "source": "M1",
+          "confidence": 0.71
+        },
+        {
+          "key": "symbol_rate_hz",
+          "value": 1000.24,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.74
+        },
+        {
+          "key": "cfo_hz",
+          "value": -120.52,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.88
+        }
+      ]
+    },
+    {
+      "id": "classify",
+      "title": "识别与门控",
+      "text": "分类器以 0.954 的概率判为 16QAM，门控为 ml，OOD 分数 1.94 远低于拒识界。",
+      "evidence": [
+        {
+          "key": "classify_modulation",
+          "value": "16qam",
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.954
+        },
+        {
+          "key": "gate",
+          "value": "ml",
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.954
+        },
+        {
+          "key": "ood_score",
+          "value": 1.94,
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.954
+        }
+      ]
+    },
+    {
+      "id": "frame",
+      "title": "帧同步与帧头 CRC",
+      "text": "帧同步锁定，帧头 CRC-8 通过；载荷 CRC-16-CCITT 通过率高于低 SNR 案例，符合高 SNR 预期。",
+      "evidence": [
+        {
+          "key": "locked",
+          "value": true,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0.97
+        },
+        {
+          "key": "header_crc_ok",
+          "value": true,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0.95
+        },
+        {
+          "key": "hypotheses_tried",
+          "value": 0,
+          "unit": "组",
+          "source": "M5",
+          "confidence": 0.9
+        }
+      ]
+    }
+  ],
+  "uncertainties": [
+    "载频偏移为负值，基带下变频后残余频偏方向需与频谱峰位交叉确认"
+  ],
+  "next_actions": [
+    "与 10 dB 案例并排对比 CRC 通过率随 SNR 的变化",
+    "把 residual CFO 送入解调页复核判决前星座"
+  ],
+  "prompt_preview": "[系统] 离线确定性渲染（未配置 SPXH_LLM_BASE_URL / SPXH_LLM_API_KEY / SPXH_LLM_MODEL）。\n[证据] M1: snr_db=19.87, symbol_rate_hz=1000.24, cfo_hz=-120.52\n        M2: modulation=16qam, gate=ml, confidence=0.954\n        M5: locked=true, header_crc_ok=true\n[要求] 使用固定的规则模板逐节渲染，任何数值必须直接来自证据字段。",
+  "warnings": []
+}

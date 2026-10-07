@@ -1,0 +1,45 @@
+{
+  "updated_at": "2026-10-07T14:56:14",
+  "t": 8,
+  "nsym": 16,
+  "rows": [
+    {
+      "burst_bytes": 8,
+      "plain_ok": true,
+      "known_ok": true,
+      "heuristic_ok": true
+    },
+    {
+      "burst_bytes": 9,
+      "plain_ok": false,
+      "known_ok": true,
+      "heuristic_ok": true
+    },
+    {
+      "burst_bytes": 12,
+      "plain_ok": false,
+      "known_ok": true,
+      "heuristic_ok": true
+    },
+    {
+      "burst_bytes": 16,
+      "plain_ok": false,
+      "known_ok": true,
+      "heuristic_ok": true
+    },
+    {
+      "burst_bytes": 17,
+      "plain_ok": false,
+      "known_ok": false,
+      "heuristic_ok": false
+    }
+  ],
+  "checks": [
+    {
+      "name": "超过 t 但在 2t 以内的突发，只有擦除译码能救回来",
+      "value": 3,
+      "target": 3,
+      "pass": true
+    }
+  ]
+}

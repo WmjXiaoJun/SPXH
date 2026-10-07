@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "latency_ms": 812,
+  "model": "qwen2.5:7b",
+  "reply": "pong（离线 mock 示例回应，真实接口最长截断 200 字）",
+  "models": [
+    "qwen2.5:7b",
+    "qwen2.5:14b",
+    "llama3.1:8b",
+    "gpt-4o-mini"
+  ],
+  "checked": {
+    "base_url": "http://127.0.0.1:11434/v1",
+    "model": "qwen2.5:7b",
+    "api_key_hint": "sk-...7f3a",
+    "chat_url": "http://127.0.0.1:11434/v1/chat/completions",
+    "models_url": "http://127.0.0.1:11434/v1/models"
+  },
+  "hint": ""
+}

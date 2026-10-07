@@ -1,0 +1,13 @@
+{
+  "ok": false,
+  "error": "连接失败：http://127.0.0.1:11434/v1/v1/chat/completions 拒绝连接（Connection refused）",
+  "latency_ms": 1200,
+  "checked": {
+    "base_url": "http://127.0.0.1:11434/v1",
+    "model": "qwen2.5:7b",
+    "api_key_hint": null,
+    "chat_url": "http://127.0.0.1:11434/v1/chat/completions",
+    "models_url": "http://127.0.0.1:11434/v1/models"
+  },
+  "hint": "该服务商可用模型：qwen2.5:7b、qwen2.5:14b、llama3.1:8b；若连不上，请确认 base_url 只填到 /v1，不要带 /chat/completions"
+}

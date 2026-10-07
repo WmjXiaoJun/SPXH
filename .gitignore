@@ -1,0 +1,50 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.so
+
+# ===== 编辑器 / 操作系统 =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 本项目特有：绝对不能提交 =====
+# LLM 配置里含 API key（Windows 上是 DPAPI 密文，其他平台可能是明文）
+models/llm_config.json
+# Web 工作台的逐请求日志（默认写这里，超过 2 MB 自动截断）
+models/web.log
+models/*.log
+
+# 大文件：训练好的分类器约 59 MB（超过 GitHub 建议的 50 MB 单文件上限），不随仓库分发。
+# 克隆后跑一次 `python scripts/train_classifier.py` 即可重建；
+# 缺少它时 classify 会退回物理规则并明确告警，其余功能与全量测试均不受影响。
+models/modulation_rf_v1.joblib
+
+# 测试与验收脚本的日志（README「跑验收与测试」与 CI 都会生成）
+pytest.log
+pytest_verify.log
+collect.txt
+readme_numbers.log
+checks_*.log
+
+# 说明：以下目录**有意不忽略**，它们是开箱可用的必需资产
+#   models/  —— 分类器元数据 modulation_rf_v1.json 与验收报告 check_*.json
+#              （59 MB 的 .joblib 模型已在上方忽略，需自行训练）
+#   data/demo/ —— 案例数据集（SigMF 元数据 + 数据 + 真值 sidecar），README 的示例直接用它
+# 本地临时生成的信号请写到仓库外，或自行在此追加规则（例如 data/local_*/）。

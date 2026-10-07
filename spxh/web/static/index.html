@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>SPXH · 智能射频信号分析平台</title>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<a class="skip-link" href="#workspace">跳到主区域</a>
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">SPXH</span>
+      <span class="brand-sub">智能射频信号分析平台</span>
+    </div>
+    <div class="topbar-meta">
+      <span class="meta-chip" id="health-estimator" title="估计器">估计器 —</span>
+      <span class="meta-chip" id="health-classifier" title="分类器">分类器 —</span>
+      <span class="meta-chip" id="mode-chip" title="数据源">后端</span>
+    </div>
+  </header>
+
+  <div class="errorbar" id="errorbar" role="alert" aria-live="assertive" hidden>
+    <div class="errorbar-head">
+      <span class="errorbar-title">接口错误</span>
+      <span class="errorbar-count" id="error-count">0</span>
+      <button class="btn btn-xs" type="button" id="error-retry">重试全部</button>
+      <button class="btn btn-xs" type="button" id="error-clear">全部清除</button>
+    </div>
+    <ul class="errorlist" id="errorlist"></ul>
+  </div>
+
+  <main class="shell">
+    <aside class="sidebar" id="sidebar" aria-label="数据源与案例">
+      <div class="panel">
+        <div class="panel-head"><h2 class="panel-title">数据源</h2></div>
+        <div class="panel-body">
+          <label class="field-label" for="path-input">手输路径</label>
+          <div class="row">
+            <input id="path-input" class="input mono" type="text" spellcheck="false" autocomplete="off"
+                   placeholder="data/demo/qpsk_snr+10.0_000.sigmf-meta" />
+            <button id="path-load" class="btn btn-primary" type="button">加载</button>
+          </div>
+          <p class="hint">支持 .sigmf-meta / .npz / .wav / .raw；相对工作区或绝对路径。</p>
+          <label class="field-label" for="dir-input">案例目录</label>
+          <div class="row">
+            <input id="dir-input" class="input mono" type="text" spellcheck="false" autocomplete="off" value="data/demo" />
+            <button id="dir-load" class="btn" type="button">刷新</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-grow">
+        <div class="panel-head">
+          <h2 class="panel-title">案例列表</h2>
+          <span class="chip" id="case-count">—</span>
+        </div>
+        <div class="panel-body">
+          <input id="case-filter" class="input mono input-sm" type="search" spellcheck="false"
+                 autocomplete="off" placeholder="过滤案例…" aria-label="过滤案例" />
+        </div>
+        <div class="panel-scroll" id="case-host">
+          <ul class="case-list" id="case-list"></ul>
+          <div class="empty" id="case-empty">尚未加载案例列表</div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="workspace" id="workspace" aria-label="分析工作区">
+      <div class="overview" id="overview">
+        <div class="ov"><span class="ov-k">当前路径</span><span class="ov-v mono" id="ov-path">—</span></div>
+        <div class="ov"><span class="ov-k">采样率</span><span class="ov-v mono" id="ov-fs">—</span></div>
+        <div class="ov"><span class="ov-k">采样点</span><span class="ov-v mono" id="ov-n">—</span></div>
+        <div class="ov"><span class="ov-k">时长</span><span class="ov-v mono" id="ov-dur">—</span></div>
+        <div class="ov"><span class="ov-k">峰值</span><span class="ov-v mono" id="ov-peak">—</span></div>
+        <div class="ov"><span class="ov-k">峰值 SNR</span><span class="ov-v mono" id="ov-peak-snr">—</span></div>
+        <div class="ov"><span class="ov-k">占用带宽</span><span class="ov-v mono" id="ov-bw">—</span></div>
+        <div class="ov"><span class="ov-k">噪声底</span><span class="ov-v mono" id="ov-floor">—</span></div>
+      </div>
+
+      <div class="alertstrip" id="alertstrip" hidden>
+        <span class="alertstrip-k">告警</span>
+        <ul class="alertlist" id="alertlist"></ul>
+      </div>
+
+      <nav class="tabs" role="tablist" aria-label="分析视图">
+        <button class="tab is-active" type="button" role="tab" id="tab-spectrum" data-tab="spectrum"
+                aria-selected="true" aria-controls="panel-spectrum">频谱 / 瀑布</button>
+        <button class="tab" type="button" role="tab" id="tab-estimate" data-tab="estimate"
+                aria-selected="false" aria-controls="panel-estimate" tabindex="-1">参数估计</button>
+        <button class="tab" type="button" role="tab" id="tab-features" data-tab="features"
+                aria-selected="false" aria-controls="panel-features" tabindex="-1">特征</button>
+        <button class="tab" type="button" role="tab" id="tab-classify" data-tab="classify"
+                aria-selected="false" aria-controls="panel-classify" tabindex="-1">识别</button>
+        <button class="tab" type="button" role="tab" id="tab-demod" data-tab="demod"
+                aria-selected="false" aria-controls="panel-demod" tabindex="-1">解调</button>
+        <button class="tab" type="button" role="tab" id="tab-fec" data-tab="fec"
+                aria-selected="false" aria-controls="panel-fec" tabindex="-1">译码</button>
+        <button class="tab" type="button" role="tab" id="tab-frame" data-tab="frame"
+                aria-selected="false" aria-controls="panel-frame" tabindex="-1">帧</button>
+        <button class="tab" type="button" role="tab" id="tab-ssca" data-tab="ssca"
+                aria-selected="false" aria-controls="panel-ssca" tabindex="-1">谱相关</button>
+        <button class="tab" type="button" role="tab" id="tab-narrate" data-tab="narrate"
+                aria-selected="false" aria-controls="panel-narrate" tabindex="-1">报告</button>
+        <button class="tab" type="button" role="tab" id="tab-agent" data-tab="agent"
+                aria-selected="false" aria-controls="panel-agent" tabindex="-1">代理</button>
+        <button class="tab" type="button" role="tab" id="tab-settings" data-tab="settings"
+                aria-selected="false" aria-controls="panel-settings" tabindex="-1">设置</button>
+      </nav>
+
+      <section class="panel-tab" id="panel-spectrum" role="tabpanel" aria-labelledby="tab-spectrum" data-panel="spectrum">
+        <div class="toolbar">
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-nperseg">nperseg</label>
+            <select class="select mono" id="ctl-nperseg">
+              <option value="256">256</option>
+              <option value="512">512</option>
+              <option value="1024" selected>1024</option>
+              <option value="2048">2048</option>
+              <option value="4096">4096</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-nfft">nfft</label>
+            <select class="select mono" id="ctl-nfft">
+              <option value="">auto</option>
+              <option value="2048">2048</option>
+              <option value="4096">4096</option>
+              <option value="8192" selected>8192</option>
+              <option value="16384">16384</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-points">points</label>
+            <select class="select mono" id="ctl-points">
+              <option value="600">600</option>
+              <option value="1200" selected>1200</option>
+              <option value="2000">2000</option>
+              <option value="4000">4000</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <span class="ctl-k">幅度</span>
+            <div class="seg" role="group" aria-label="幅度刻度">
+              <button class="seg-btn is-active" type="button" data-scale="db" aria-pressed="true">dB</button>
+              <button class="seg-btn" type="button" data-scale="linear" aria-pressed="false">线性</button>
+            </div>
+          </div>
+          <label class="check"><input type="checkbox" id="ctl-residual" checked /> 残余曲线</label>
+          <button class="btn btn-xs" type="button" id="ctl-reload">重绘</button>
+        </div>
+
+        <figure class="plot-card">
+          <figcaption class="plot-head">
+            <h2 class="plot-title">功率谱密度</h2>
+            <div class="legend" id="spectrum-legend"></div>
+          </figcaption>
+          <div class="plot-body plot-h-psd">
+            <canvas id="spectrum-canvas"></canvas>
+            <div class="plot-empty" id="spectrum-empty" hidden>暂无频谱数据</div>
+          </div>
+        </figure>
+
+        <figure class="plot-card">
+          <figcaption class="plot-head">
+            <h2 class="plot-title">瀑布图</h2>
+            <span class="plot-meta mono" id="waterfall-meta">—</span>
+          </figcaption>
+          <div class="plot-body plot-h-wf">
+            <canvas id="waterfall-canvas"></canvas>
+            <div class="plot-empty" id="waterfall-empty" hidden>暂无瀑布数据</div>
+          </div>
+        </figure>
+      </section>
+
+      <section class="panel-tab" id="panel-estimate" role="tabpanel" aria-labelledby="tab-estimate" data-panel="estimate" hidden>
+        <div class="card-grid" id="est-cards"></div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">估计 vs 真值对账</h2>
+            <span class="chip" id="compare-mod">—</span>
+          </div>
+          <div class="panel-body" id="compare-body"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h2 class="panel-title">分析元数据</h2></div>
+          <div class="panel-body"><dl class="kv" id="analyze-meta"></dl></div>
+        </div>
+      </section>
+
+      <section class="panel-tab" id="panel-features" role="tabpanel" aria-labelledby="tab-features" data-panel="features" hidden>
+        <div class="chiprow" id="feature-summary"></div>
+        <div class="group-grid" id="feature-groups"></div>
+        <figure class="plot-card">
+          <figcaption class="plot-head">
+            <h2 class="plot-title">星座图</h2>
+            <span class="plot-meta mono" id="constellation-meta">—</span>
+          </figcaption>
+          <div class="plot-body plot-h-iq">
+            <canvas id="constellation-canvas"></canvas>
+            <div class="plot-empty" id="constellation-empty" hidden>暂无星座数据</div>
+          </div>
+        </figure>
+      </section>
+
+      <section class="panel-tab" id="panel-classify" role="tabpanel" aria-labelledby="tab-classify" data-panel="classify" hidden>
+        <div class="verdict" id="verdict">
+          <div class="verdict-main">
+            <span class="verdict-k">识别结果</span>
+            <span class="verdict-mod mono" id="verdict-mod">—</span>
+            <span class="verdict-sub" id="verdict-sub">等待数据</span>
+          </div>
+          <div class="verdict-side">
+            <span class="badge" id="verdict-gate">门控 —</span>
+            <span class="badge" id="verdict-conf">置信度 —</span>
+            <span class="badge" id="verdict-ood">OOD —</span>
+            <span class="badge" id="verdict-cal">校准 —</span>
+          </div>
+        </div>
+
+        <div class="classify-grid">
+          <div class="panel">
+            <div class="panel-head"><h2 class="panel-title">调制概率</h2><span class="chip" id="prob-count">—</span></div>
+            <div class="panel-body" id="prob-bars"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2 class="panel-title">门控与判据</h2></div>
+            <div class="panel-body"><dl class="kv" id="gate-body"></dl></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2 class="panel-title">物理规则回退</h2><span class="chip" id="physical-state">—</span></div>
+            <div class="panel-body" id="physical-body"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel-tab" id="panel-demod" role="tabpanel" aria-labelledby="tab-demod" data-panel="demod" hidden>
+        <div class="lockstrip" id="demod-lock">
+          <div class="lock-main">
+            <span class="lock-k">环路锁定</span>
+            <span class="badge" id="lock-timing">定时锁定 —</span>
+            <span class="badge" id="lock-carrier">载波锁定 —</span>
+            <span class="badge" id="lock-mod">调制 —</span>
+            <span class="badge" id="lock-src">来源 —</span>
+          </div>
+          <div class="lock-metrics">
+            <div class="lm"><span class="lm-k">timing_metric</span><span class="lm-v mono" id="lock-timing-metric">—</span></div>
+            <div class="lm"><span class="lm-k">carrier_metric</span><span class="lm-v mono" id="lock-carrier-metric">—</span></div>
+            <div class="lm"><span class="lm-k">snr_db</span><span class="lm-v mono" id="lock-snr">—</span></div>
+            <div class="lm"><span class="lm-k">locked_symbols</span><span class="lm-v mono" id="lock-syms">—</span></div>
+            <div class="lm"><span class="lm-k">evm_percent</span><span class="lm-v mono" id="lock-evm">—</span></div>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-demod-mod">调制</label>
+            <select class="select mono" id="ctl-demod-mod">
+              <option value="">自动（用分类结果）</option>
+              <option value="bpsk">bpsk</option>
+              <option value="qpsk">qpsk</option>
+              <option value="8psk">8psk</option>
+              <option value="16qam">16qam</option>
+              <option value="32qam">32qam</option>
+              <option value="64qam">64qam</option>
+              <option value="2fsk">2fsk</option>
+              <option value="4fsk">4fsk</option>
+              <option value="8fsk">8fsk</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-demod-max-symbols">max_symbols</label>
+            <select class="select mono" id="ctl-demod-max-symbols">
+              <option value="500">500</option>
+              <option value="1000">1000</option>
+              <option value="2000" selected>2000</option>
+              <option value="4000">4000</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-demod-trace-points">trace_points</label>
+            <select class="select mono" id="ctl-demod-trace-points">
+              <option value="100">100</option>
+              <option value="200">200</option>
+              <option value="400" selected>400</option>
+              <option value="800">800</option>
+            </select>
+          </div>
+          <label class="check"><input type="checkbox" id="ctl-demod-regions" checked /> 判决区域</label>
+          <button class="btn btn-xs" type="button" id="ctl-demod-reload">重解调</button>
+        </div>
+
+        <p class="hint" id="demod-hint">调制选「自动」时后端使用 /api/classify 的结果；手动指定会把 modulation 作为查询参数传给 /api/demod。</p>
+
+        <figure class="plot-card">
+          <figcaption class="plot-head">
+            <h2 class="plot-title">判决前星座（symbols）</h2>
+            <div class="legend" id="demod-const-legend"></div>
+            <span class="plot-meta mono" id="demod-const-meta">—</span>
+          </figcaption>
+          <div class="plot-body plot-h-mod-iq">
+            <canvas id="demod-constellation-canvas"></canvas>
+            <div class="plot-empty" id="demod-constellation-empty" hidden>暂无解调数据</div>
+          </div>
+        </figure>
+
+        <figure class="plot-card">
+          <figcaption class="plot-head">
+            <h2 class="plot-title">同步轨迹（定时 / 相位 / 频率）</h2>
+            <div class="legend" id="demod-sync-legend"></div>
+            <span class="plot-meta mono" id="demod-sync-meta">—</span>
+          </figcaption>
+          <div class="plot-body plot-h-sync">
+            <canvas id="demod-sync-canvas"></canvas>
+            <div class="plot-empty" id="demod-sync-empty" hidden>暂无同步轨迹数据</div>
+          </div>
+        </figure>
+
+        <div class="demod-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">比特流</h2>
+              <span class="chip" id="bits-count">—</span>
+            </div>
+            <div class="panel-body" id="bits-body"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">误码统计 BER</h2>
+              <span class="chip" id="ber-state">—</span>
+            </div>
+            <div class="panel-body" id="ber-body"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">解调告警</h2>
+              <span class="chip" id="demod-warn-count">—</span>
+            </div>
+            <div class="panel-body" id="demod-warnings"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel-tab" id="panel-fec" role="tabpanel" aria-labelledby="tab-fec" data-panel="fec" hidden>
+        <div class="toolbar">
+          <div class="ctl">
+            <span class="ctl-k">纵轴指标</span>
+            <div class="seg" role="group" aria-label="纵轴指标">
+              <button class="seg-btn is-active" type="button" id="fec-metric-ber" data-fec-metric="ber" aria-pressed="true">BER</button>
+              <button class="seg-btn" type="button" id="fec-metric-bler" data-fec-metric="bler" aria-pressed="false">BLER</button>
+            </div>
+          </div>
+          <span class="fec-meta mono" id="fec-meta">—</span>
+          <button class="btn btn-xs" type="button" id="ctl-fec-reload">重新加载</button>
+        </div>
+
+        <div class="card-grid" id="fec-cards"></div>
+
+        <figure class="plot-card">
+          <figcaption class="plot-head">
+            <h2 class="plot-title" id="fec-plot-title">BER vs Eb/N0</h2>
+            <div class="legend" id="fec-legend"></div>
+          </figcaption>
+          <div class="plot-body plot-h-fec" id="fec-plot-body">
+            <canvas id="fec-canvas"></canvas>
+            <div class="fec-tip" id="fec-tip" hidden></div>
+            <div class="plot-empty" id="fec-empty" hidden>暂无译码数据</div>
+          </div>
+        </figure>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">编码目录</h2>
+            <span class="chip" id="fec-cat-count">—</span>
+          </div>
+          <div class="panel-body table-scroll" id="fec-catalogue"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">验收清单</h2>
+            <span class="chip" id="fec-check-count">—</span>
+          </div>
+          <div class="panel-body table-scroll" id="fec-checks"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">报告说明</h2>
+            <span class="chip" id="fec-note-count">—</span>
+          </div>
+          <div class="panel-body" id="fec-notes"></div>
+        </div>
+      </section>
+
+      <section class="panel-tab" id="panel-frame" role="tabpanel" aria-labelledby="tab-frame" data-panel="frame" hidden>
+        <div class="toolbar">
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-frame-mod">调制</label>
+            <select class="select mono" id="ctl-frame-mod">
+              <option value="">自动（用分类结果）</option>
+              <option value="bpsk">bpsk</option>
+              <option value="qpsk">qpsk</option>
+              <option value="8psk">8psk</option>
+              <option value="16qam">16qam</option>
+              <option value="32qam">32qam</option>
+              <option value="64qam">64qam</option>
+              <option value="2fsk">2fsk</option>
+              <option value="4fsk">4fsk</option>
+              <option value="8fsk">8fsk</option>
+            </select>
+          </div>
+          <button class="btn btn-xs" type="button" id="ctl-frame-reload">重新提取</button>
+        </div>
+
+        <p class="hint" id="frame-hint">Barker-13 前导滑动相关锁定帧起点，并由相关峰相位直接解出相位模糊角（不再靠真值搜索旋转）；帧头给出载荷长度 / 调制 / 编码 / 交织，CRC-16-CCITT 校验载荷完整性。帧头为 5 字节（前 4 字节 + CRC-8），<code>header.header_crc_ok</code> 是帧头自校验结果；<code>blind=1</code> 时 <code>sync.blind</code> 给出盲长度恢复过程（契约 §15）。</p>
+
+        <div class="lockstrip" id="frame-sync">
+          <div class="lock-main">
+            <span class="lock-k">帧同步</span>
+            <span class="badge" id="fs-lock">同步 —</span>
+            <span class="badge" id="fs-preamble">前导 —</span>
+            <span class="badge" id="fs-mod">调制 —</span>
+            <span class="badge" id="fs-src">来源 —</span>
+          </div>
+          <div class="lock-metrics">
+            <div class="lm"><span class="lm-k">preamble_bits</span><span class="lm-v mono" id="fs-preamble-bits">—</span></div>
+            <div class="lm"><span class="lm-k">correlation_peak</span><span class="lm-v mono" id="fs-peak">—</span></div>
+            <div class="lm"><span class="lm-k">peak_to_sidelobe_db</span><span class="lm-v mono" id="fs-psl">—</span></div>
+            <div class="lm"><span class="lm-k">frame_start_symbol</span><span class="lm-v mono" id="fs-symbol">—</span></div>
+            <div class="lm"><span class="lm-k">frame_start_sample</span><span class="lm-v mono" id="fs-sample">—</span></div>
+          </div>
+        </div>
+
+        <div class="lockstrip blindstrip" id="frame-blind" hidden>
+          <div class="lock-main">
+            <span class="lock-k">盲恢复</span>
+            <span class="badge" id="fb-header-crc">帧头 CRC —</span>
+            <span class="badge" id="fb-length">长度恢复 —</span>
+          </div>
+          <div class="lock-metrics">
+            <div class="lm"><span class="lm-k">hypotheses_tried</span><span class="lm-v mono" id="fb-hypotheses">—</span></div>
+            <div class="lm"><span class="lm-k">repaired payload_len</span><span class="lm-v mono" id="fb-payload-len">—</span></div>
+            <div class="lm"><span class="lm-k">repaired fec</span><span class="lm-v mono" id="fb-fec">—</span></div>
+            <div class="lm"><span class="lm-k">repaired interleave</span><span class="lm-v mono" id="fb-interleave">—</span></div>
+          </div>
+        </div>
+
+        <div class="rotbox">
+          <div class="rot-dial" aria-hidden="true"><span class="rot-needle" id="rot-needle"></span></div>
+          <div class="rot-main">
+            <span class="rot-k">前导解出的相位模糊</span>
+            <span class="rot-v mono" id="rot-deg">—</span>
+            <span class="rot-src" id="rot-note">ambiguity_rotation_deg · Barker-13 相关解出，取代真值搜索</span>
+          </div>
+          <span class="badge rot-quad" id="rot-quad">—</span>
+        </div>
+
+        <div class="card-grid" id="frame-cards"></div>
+
+        <figure class="plot-card">
+          <figcaption class="plot-head">
+            <h2 class="plot-title">滑动相关峰（Barker-13）</h2>
+            <div class="legend" id="frame-corr-legend"></div>
+            <span class="plot-meta mono" id="frame-corr-meta">—</span>
+          </figcaption>
+          <div class="plot-body plot-h-frame-corr">
+            <canvas id="frame-corr-canvas"></canvas>
+            <div class="plot-empty" id="frame-corr-empty" hidden>暂无相关峰数据</div>
+          </div>
+        </figure>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">帧表</h2>
+            <span class="chip" id="frame-count">—</span>
+            <span class="chip" id="frame-sel-chip">未选择</span>
+          </div>
+          <div class="panel-body table-scroll" id="frame-table"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">载荷</h2>
+            <span class="chip" id="payload-meta">—</span>
+          </div>
+          <div class="panel-body" id="payload-body"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">帧告警</h2>
+            <span class="chip" id="frame-warn-count">—</span>
+          </div>
+          <div class="panel-body" id="frame-warnings"></div>
+        </div>
+      </section>
+
+      <section class="panel-tab" id="panel-ssca" role="tabpanel" aria-labelledby="tab-ssca" data-panel="ssca" hidden>
+        <div class="toolbar">
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-ssca-nfft">nfft</label>
+            <select class="select mono" id="ctl-ssca-nfft">
+              <option value="128">128</option>
+              <option value="256" selected>256</option>
+              <option value="512">512</option>
+              <option value="1024">1024</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-ssca-points">max_points</label>
+            <select class="select mono" id="ctl-ssca-points">
+              <option value="80">80</option>
+              <option value="160" selected>160</option>
+              <option value="240">240</option>
+              <option value="320">320</option>
+            </select>
+          </div>
+          <span class="fec-meta mono" id="ssca-meta">—</span>
+          <button class="btn btn-xs" type="button" id="ctl-ssca-reload">重新计算</button>
+        </div>
+
+        <p class="hint" id="ssca-hint">双频平面：横轴 f 是频移，纵轴 α 是循环频率；能量峰落在 (f = 载频偏移, α = 符号速率及其谐波)。数据来自 /api/ssca（契约 §13）。图上滚轮以鼠标为锚点缩放，Shift 只缩 X，Alt 只缩 Y，按住左键拖动平移，双击或右上角按钮复位。</p>
+
+        <figure class="plot-card">
+          <figcaption class="plot-head">
+            <h2 class="plot-title">双频平面热图（α × f）</h2>
+            <div class="legend" id="ssca-legend"></div>
+            <span class="plot-meta mono" id="ssca-map-meta">—</span>
+          </figcaption>
+          <div class="plot-body plot-h-ssca-map">
+            <canvas id="ssca-canvas"></canvas>
+            <div class="fec-tip" id="ssca-tip" hidden></div>
+            <div class="plot-empty" id="ssca-empty" hidden>暂无谱相关数据</div>
+          </div>
+        </figure>
+
+        <figure class="plot-card">
+          <figcaption class="plot-head">
+            <h2 class="plot-title">剖面曲线</h2>
+          </figcaption>
+          <div class="plot-sub">
+            <div class="plot-sub-head">
+              <span class="plot-sub-title">α 剖面（对 f 取最大）</span>
+              <span class="plot-meta mono" id="ssca-alpha-meta">—</span>
+            </div>
+            <div class="plot-body plot-h-ssca-prof">
+              <canvas id="ssca-alpha-canvas"></canvas>
+              <div class="plot-empty" id="ssca-alpha-empty" hidden>暂无 α 剖面</div>
+            </div>
+          </div>
+          <div class="plot-sub">
+            <div class="plot-sub-head">
+              <span class="plot-sub-title">f 剖面（对 α 取最大）</span>
+              <span class="plot-meta mono" id="ssca-freq-meta">—</span>
+            </div>
+            <div class="plot-body plot-h-ssca-prof">
+              <canvas id="ssca-freq-canvas"></canvas>
+              <div class="plot-empty" id="ssca-freq-empty" hidden>暂无 f 剖面</div>
+            </div>
+          </div>
+        </figure>
+
+        <div class="ssca-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">峰值表</h2>
+              <span class="chip" id="ssca-peak-count">—</span>
+            </div>
+            <div class="panel-body table-scroll" id="ssca-peaks"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">特征读数</h2>
+              <span class="chip" id="ssca-feat-chip">谱相关 vs 参数估计</span>
+            </div>
+            <div class="panel-body table-scroll" id="ssca-features"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">谱相关告警</h2>
+            <span class="chip" id="ssca-warn-count">—</span>
+          </div>
+          <div class="panel-body" id="ssca-warnings"></div>
+        </div>
+      </section>
+
+      <section class="panel-tab" id="panel-narrate" role="tabpanel" aria-labelledby="tab-narrate" data-panel="narrate" hidden>
+        <div class="toolbar">
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-narrate-provider">provider</label>
+            <select class="select mono" id="ctl-narrate-provider">
+              <option value="auto" selected>auto</option>
+              <option value="llm">llm</option>
+              <option value="offline">offline</option>
+            </select>
+          </div>
+          <span class="hint tiny" id="narrate-llm-hint" hidden>未配置 LLM，将使用离线渲染</span>
+          <span class="fec-meta mono" id="narrate-meta">—</span>
+          <button class="btn btn-xs" type="button" id="ctl-narrate-reload">重新生成</button>
+          <button class="btn btn-xs" type="button" id="narrate-goto-settings">去设置</button>
+        </div>
+
+        <p class="hint" id="narrate-hint">把 M1 参数估计、M2 分类与门控、M5 帧同步 / CRC、M7 盲识别、M8 谱相关峰的结构化证据交给 LLM 生成分析师视角的中文报告；没有配 LLM 时走离线确定性渲染。<strong>sections[].evidence 全部来自管线真实计算，LLM 不许编</strong>。数据来自 /api/narrate（契约 §16）。</p>
+
+        <div class="report-head">
+          <div class="report-badges">
+            <span class="badge badge-na" id="narrate-mode">模式 —</span>
+            <span class="badge badge-na" id="narrate-model">模型 —</span>
+            <span class="badge badge-na" id="narrate-time">时间 —</span>
+            <span class="badge badge-na" id="narrate-llm-info">LLM —</span>
+          </div>
+          <div class="conf-box">
+            <span class="conf-k">置信度 confidence</span>
+            <span class="conf-num mono" id="narrate-conf-num">—</span>
+            <div class="bar-track conf-track"><span class="bar-fill" id="narrate-conf-fill"></span></div>
+          </div>
+        </div>
+
+        <div class="headline" id="narrate-headline">—</div>
+
+        <div class="empty" id="narrate-empty">—</div>
+
+        <div class="report-sections" id="narrate-sections"></div>
+
+        <div class="ssca-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">不确定项</h2>
+              <span class="chip" id="narrate-unc-count">—</span>
+            </div>
+            <div class="panel-body" id="narrate-uncertainties"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">下一步动作</h2>
+              <span class="chip" id="narrate-act-count">—</span>
+            </div>
+            <div class="panel-body" id="narrate-actions"></div>
+          </div>
+        </div>
+
+        <details class="evidence prompt-fold" id="narrate-prompt-fold">
+          <summary>查看提示词（prompt_preview）</summary>
+          <pre class="mono prompt-pre" id="narrate-prompt">—</pre>
+        </details>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">报告告警</h2>
+            <span class="chip" id="narrate-warn-count">—</span>
+          </div>
+          <div class="panel-body" id="narrate-warnings"></div>
+        </div>
+      </section>
+
+      <section class="panel-tab" id="panel-agent" role="tabpanel" aria-labelledby="tab-agent" data-panel="agent" hidden>
+        <div class="toolbar">
+          <div class="ctl ctl-grow">
+            <label class="ctl-k" for="agent-goal">目标 goal</label>
+            <input id="agent-goal" class="input mono" type="text" spellcheck="false" autocomplete="off"
+                   placeholder="可选：想确认什么；留空 = 让代理自己决定" />
+          </div>
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-agent-provider">provider</label>
+            <select class="select mono" id="ctl-agent-provider">
+              <option value="auto" selected>auto</option>
+              <option value="offline">offline</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label class="ctl-k" for="ctl-agent-rounds">max_rounds</label>
+            <input id="ctl-agent-rounds" class="input mono input-xs" type="number" min="1" max="12" step="1" value="6" />
+          </div>
+          <button class="btn btn-primary" type="button" id="agent-run">运行代理</button>
+          <button class="btn btn-xs" type="button" id="agent-tools-reload">刷新预算</button>
+          <span class="fec-meta mono" id="agent-budget">预算 —</span>
+          <span class="agent-status mono" id="agent-status">尚未运行</span>
+        </div>
+
+        <p class="hint" id="agent-hint">把「参数估计 / 功率谱 / 识别 / 解调 / 帧 / 谱相关 / 案例」这些确定性工具交给一个<b>有界</b>的代理循环：模型每轮只决定调哪个工具、看什么，最多 6 轮 / 12 次工具调用 / 120 秒（以 GET /api/agent/tools 的 budgets 为准），触顶即停并如实回报 stop_reason。工具结果是结构化证据（summary 给人看、evidence 给 grounding 用），失败的调用也会原样显示。数据来自 GET /api/agent/tools 与 POST /api/agent/run（契约 §18）。<b>进入本页不会自动运行</b>（花钱且慢），必须点「运行代理」。</p>
+
+        <div class="report-head">
+          <div class="report-badges">
+            <span class="badge badge-na" id="agent-mode">模式 —</span>
+            <span class="badge badge-na" id="agent-model">模型 —</span>
+            <span class="badge badge-na" id="agent-stop">stop_reason —</span>
+          </div>
+          <div class="conf-box">
+            <span class="conf-k">置信度 confidence</span>
+            <span class="conf-num mono" id="agent-conf-num">—</span>
+            <div class="bar-track conf-track"><span class="bar-fill" id="agent-conf-fill"></span></div>
+          </div>
+        </div>
+
+        <div class="headline" id="agent-headline">—</div>
+
+        <div class="empty" id="agent-empty">尚未运行</div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">轮次时间线</h2>
+            <span class="chip" id="agent-round-count">—</span>
+            <span class="hint tiny" id="agent-round-note"></span>
+          </div>
+          <div class="panel-body agent-timeline" id="agent-rounds"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><h2 class="panel-title">最终结论 sections</h2></div>
+          <div class="panel-body"><div class="report-sections" id="agent-sections"></div></div>
+        </div>
+
+        <div class="ssca-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">不确定项</h2>
+              <span class="chip" id="agent-unc-count">—</span>
+            </div>
+            <div class="panel-body" id="agent-uncertainties"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">下一步动作</h2>
+              <span class="chip" id="agent-act-count">—</span>
+            </div>
+            <div class="panel-body" id="agent-actions"></div>
+          </div>
+        </div>
+
+        <div class="ssca-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">运行摘要</h2>
+              <span class="chip mono" id="agent-elapsed">—</span>
+            </div>
+            <div class="panel-body">
+              <div class="kv-list" id="agent-trace"></div>
+              <div class="agent-stop-text" id="agent-stop-text">—</div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">事实锚定 grounding</h2>
+              <span class="chip" id="agent-grounding-chip">—</span>
+            </div>
+            <div class="panel-body">
+              <div class="kv-list" id="agent-grounding"></div>
+              <div class="agent-unsupported" id="agent-unsupported"></div>
+            </div>
+          </div>
+        </div>
+
+        <details class="evidence prompt-fold" id="agent-prompt-fold">
+          <summary>查看提示词（prompt_preview，审计用）</summary>
+          <pre class="mono prompt-pre" id="agent-prompt">—</pre>
+        </details>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2 class="panel-title">代理告警</h2>
+            <span class="chip" id="agent-warn-count">—</span>
+          </div>
+          <div class="panel-body" id="agent-warnings"></div>
+        </div>
+      </section>
+
+      <section class="panel-tab" id="panel-settings" role="tabpanel" aria-labelledby="tab-settings" data-panel="settings" hidden>
+        <div class="toolbar">
+          <span class="llm-ready is-unknown" id="llm-ready">LLM 状态未知</span>
+          <span class="fec-meta mono" id="llm-meta">—</span>
+          <button class="btn btn-xs" type="button" id="llm-refresh">刷新配置</button>
+        </div>
+
+        <p class="hint" id="llm-hint">配置优先级：<strong>本地配置文件 &gt; 环境变量 &gt; 内置默认</strong>。密钥只落本地文件，接口一律脱敏回显；本页任何位置都不会显示密钥明文（API Key 输入框为密码框，输入内容不回显到任何文本）。Base URL 保存时由服务端<b>自动归一化</b>（例如误填了 <code>/chat/completions</code> 会被去掉），保存成功后按响应值回填表单；上方预设只填 Base URL 与 model，不会覆盖你输入的密钥。数据来自 /api/llm/*（契约 §17）。</p>
+
+        <div class="panel auth-panel">
+          <div class="panel-head">
+            <h2 class="panel-title">访问令牌</h2>
+            <span class="chip mono" id="auth-state">状态未知</span>
+            <button class="btn btn-xs" type="button" id="auth-refresh">刷新状态</button>
+          </div>
+          <div class="panel-body">
+            <p class="hint" id="auth-hint">正在读取 /api/auth/status…</p>
+            <div class="form-row">
+              <label class="form-k" for="auth-token">令牌 token</label>
+              <div class="form-v">
+                <div class="key-row">
+                  <input id="auth-token" class="input mono" type="password" autocomplete="new-password"
+                         spellcheck="false" placeholder="留空 = 不带令牌；粘贴令牌后点「保存令牌」" />
+                  <button class="btn" type="button" id="auth-token-save">保存令牌</button>
+                  <button class="btn btn-xs" type="button" id="auth-token-clear">清除令牌</button>
+                </div>
+                <div class="key-meta">
+                  <span class="mono key-state is-off" id="auth-token-state">令牌 未保存</span>
+                </div>
+                <div class="hint tiny">令牌只保存在本机浏览器的 localStorage，<b>不发给后端保存</b>、不写进页面任何文本 / 标题 / 错误信息；保存后所有 /api 请求自动带 <code>Authorization: Bearer …</code>（契约 §19）。服务器未启用令牌时留空即可。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="llm-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">LLM 配置</h2>
+              <span class="chip mono" id="llm-config-path">config_path —</span>
+            </div>
+            <div class="panel-body">
+              <div class="form-row">
+                <label class="form-k" for="llm-enabled">启用 enabled</label>
+                <div class="form-v">
+                  <label class="check"><input type="checkbox" id="llm-enabled" /> 允许调用 LLM（关闭后 /api/narrate 一律离线）</label>
+                  <span class="src-badge src-unknown" id="llm-src-enabled">来源 —</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <span class="form-k">服务商预设</span>
+                <div class="form-v">
+                  <div class="row preset-row" id="llm-presets" role="group"
+                       aria-label="服务商预设：一键填入 Base URL 与 model，不提交、不动密钥"></div>
+                  <div class="hint tiny preset-notes" id="llm-preset-notes" hidden></div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-k" for="llm-base-url">Base URL</label>
+                <div class="form-v">
+                  <input id="llm-base-url" class="input mono" type="text" spellcheck="false" autocomplete="off"
+                         placeholder="https://api.openai.com/v1" />
+                  <span class="src-badge src-unknown" id="llm-src-base-url">来源 —</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-k" for="llm-api-key">API Key</label>
+                <div class="form-v">
+                  <div class="key-row">
+                    <input id="llm-api-key" class="input mono" type="password" autocomplete="new-password"
+                           spellcheck="false" placeholder="留空 = 不修改已保存的密钥" />
+                    <button class="btn btn-xs eye-btn" type="button" id="llm-key-eye" aria-pressed="false"
+                            title="显示 / 隐藏输入内容">显示</button>
+                  </div>
+                  <div class="key-meta">
+                    <span class="src-badge src-unknown" id="llm-src-api-key">来源 —</span>
+                    <span class="mono key-state is-off" id="llm-key-state">密钥 未配置</span>
+                    <button class="btn btn-xs" type="button" id="llm-key-clear">清除密钥</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-k" for="llm-model">模型 model</label>
+                <div class="form-v">
+                  <input id="llm-model" class="input mono" type="text" spellcheck="false" autocomplete="off"
+                         list="llm-model-options" placeholder="gpt-4o-mini" />
+                  <datalist id="llm-model-options"></datalist>
+                  <div class="row models-row">
+                    <button class="btn btn-xs" type="button" id="llm-models-pull">拉取模型列表</button>
+                    <select class="select mono select-sm" id="llm-model-select" hidden>
+                      <option value="">（候选模型）</option>
+                    </select>
+                    <span class="src-badge src-unknown" id="llm-src-model">来源 —</span>
+                  </div>
+                  <div class="hint tiny" id="llm-models-note">尚未拉取模型列表</div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-k" for="llm-temperature">temperature</label>
+                <div class="form-v">
+                  <div class="range-row">
+                    <input type="range" id="llm-temperature-range" min="0" max="2" step="0.1" value="0.2"
+                           aria-label="temperature 滑块" />
+                    <input id="llm-temperature" class="input mono input-xs" type="number" min="0" max="2" step="0.1" value="0.2" />
+                  </div>
+                  <span class="src-badge src-unknown" id="llm-src-temperature">来源 —</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-k" for="llm-max-tokens">max_tokens</label>
+                <div class="form-v">
+                  <input id="llm-max-tokens" class="input mono input-sm" type="number" min="1" step="1" placeholder="1200" />
+                  <span class="src-badge src-unknown" id="llm-src-max-tokens">来源 —</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-k" for="llm-timeout">timeout_s</label>
+                <div class="form-v">
+                  <input id="llm-timeout" class="input mono input-sm" type="number" min="1" step="1" placeholder="40" />
+                  <span class="src-badge src-unknown" id="llm-src-timeout-s">来源 —</span>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="button" id="llm-save">保存配置</button>
+                <button class="btn" type="button" id="llm-test">测试连接</button>
+                <label class="mini-check"><input type="checkbox" id="llm-test-override" /> 用当前表单值测试（不落盘）</label>
+              </div>
+              <div class="llm-status" id="llm-save-status">—</div>
+            </div>
+          </div>
+
+          <div class="llm-side">
+            <div class="panel">
+              <div class="panel-head">
+                <h2 class="panel-title">就绪状态</h2>
+                <span class="chip" id="llm-ready-chip">—</span>
+              </div>
+              <div class="panel-body">
+                <div class="llm-ready-banner is-unknown" id="llm-ready-banner">LLM 状态未知</div>
+                <div class="kv-list" id="llm-summary"></div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <h2 class="panel-title">环境变量</h2>
+                <span class="chip">只报是否设置</span>
+              </div>
+              <div class="panel-body"><div class="kv-list" id="llm-env"></div></div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <h2 class="panel-title">连接测试</h2>
+                <span class="chip" id="llm-test-chip">—</span>
+              </div>
+              <div class="panel-body"><div class="llm-test" id="llm-test-result">尚未测试</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="statusbar">
+    <span class="status-item mono" id="status-path">未选择数据</span>
+    <span class="status-spacer"></span>
+    <span class="status-item mono" id="status-tab">视图 spectrum</span>
+    <span class="status-item mono" id="status-updated">—</span>
+    <span class="status-item mono" id="status-source">source: backend</span>
+  </footer>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>

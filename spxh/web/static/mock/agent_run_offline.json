@@ -1,0 +1,227 @@
+{
+  "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta",
+  "mode": "offline",
+  "model": null,
+  "goal": "确认这帧是不是 QPSK，符号速率和解调能不能信",
+  "stop_reason": "no_llm",
+  "rounds": [
+    {
+      "index": 1,
+      "assistant_text": "离线确定性计划（1/4）：参数估计。",
+      "tool_calls": [
+        {
+          "name": "analyze",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta"
+          },
+          "ok": true,
+          "duration_ms": 13,
+          "summary": "Es/N0 10.02 dB；符号速率 999.97 Hz；载频偏移 3.86 Hz",
+          "evidence": {
+            "snr_db": 10.02,
+            "symbol_rate_hz": 999.97,
+            "cfo_hz": 3.86
+          }
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "assistant_text": "离线确定性计划（2/4）：调制识别与门控。",
+      "tool_calls": [
+        {
+          "name": "classify",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta"
+          },
+          "ok": true,
+          "duration_ms": 29,
+          "summary": "调制 qpsk（置信度 0.91，门控 ml，OOD 2.71）",
+          "evidence": {
+            "modulation": "qpsk",
+            "confidence": 0.91,
+            "gate": "ml"
+          }
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "assistant_text": "离线确定性计划（3/4）：帧同步与载荷 CRC。",
+      "tool_calls": [
+        {
+          "name": "frame",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta",
+            "blind": true
+          },
+          "ok": true,
+          "duration_ms": 58,
+          "summary": "检出 6 帧；帧头 CRC-8 通过；2 帧载荷 CRC-16 通过",
+          "evidence": {
+            "frames": 6,
+            "header_crc_ok": true,
+            "frames_crc_ok": 2
+          }
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "assistant_text": "离线确定性计划（4/4）：谱相关交叉验证。",
+      "tool_calls": [
+        {
+          "name": "ssca",
+          "args": {
+            "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta",
+            "nfft": 256
+          },
+          "ok": true,
+          "duration_ms": 336,
+          "summary": "α 轴最强峰 1000.09 Hz；f 脊线偏移 32 Hz",
+          "evidence": {
+            "alpha_peak_hz": 1000.09,
+            "ridge_offset_hz": 32
+          }
+        }
+      ]
+    }
+  ],
+  "final": {
+    "headline": "离线确定性结论：qpsk · 符号速率 ≈1000 Hz · Es/N0 ≈10.0 dB（无 LLM，未做自由推理）",
+    "text": "没有可用 LLM，本次走固定计划 analyze → classify → frame → ssca，只做事实汇总不做推理。参数估计、识别门控与谱相关峰一致指向 qpsk / 1000 Hz；帧头 CRC 通过。",
+    "confidence": 0.55,
+    "sections": [
+      {
+        "id": "plan",
+        "title": "离线计划",
+        "text": "固定四步：analyze → classify → frame → ssca。没有模型参与，因此没有取舍与追问，只有证据汇总。",
+        "evidence": []
+      },
+      {
+        "id": "signal",
+        "title": "信号与参数",
+        "text": "三项盲估计读数如下。",
+        "evidence": [
+          {
+            "key": "snr_db",
+            "value": 10.02,
+            "unit": "dB",
+            "source": "M1",
+            "confidence": 0.66
+          },
+          {
+            "key": "symbol_rate_hz",
+            "value": 999.97,
+            "unit": "Hz",
+            "source": "M1",
+            "confidence": 0.62
+          },
+          {
+            "key": "cfo_hz",
+            "value": 3.86,
+            "unit": "Hz",
+            "source": "M1",
+            "confidence": 0.81
+          }
+        ]
+      },
+      {
+        "id": "frame",
+        "title": "帧同步",
+        "text": "Barker-13 相关锁定，帧头 CRC-8 通过。",
+        "evidence": [
+          {
+            "key": "frames",
+            "value": 6,
+            "unit": "帧",
+            "source": "M5",
+            "confidence": 0.9
+          },
+          {
+            "key": "header_crc_ok",
+            "value": true,
+            "unit": "",
+            "source": "M5",
+            "confidence": 0.95
+          }
+        ]
+      }
+    ],
+    "uncertainties": [
+      "离线模式没有 LLM 推理，不会主动追问或交叉质疑。",
+      "本报告是 ?mock=1 的演示数据，与真实案例数值无关。"
+    ],
+    "next_actions": [
+      "在设置页配置 LLM 后用 provider=auto 重跑，让模型自己决定工具顺序。",
+      "核对 grounding.unsupported 里列出的数字，确认不是离线模板残留。"
+    ]
+  },
+  "trace_summary": {
+    "rounds": 4,
+    "tool_calls": 4,
+    "tools_used": [
+      "analyze",
+      "classify",
+      "frame",
+      "ssca"
+    ],
+    "elapsed_ms": 1180,
+    "budget": {
+      "max_rounds": 6,
+      "max_tool_calls": 12,
+      "timeout_s": 120
+    }
+  },
+  "grounding": {
+    "grounded": false,
+    "checked_numbers": 9,
+    "unsupported": [
+      "14.8 dB（final.text 引用的 Es/N0 与证据 10.02 dB 不一致）",
+      "2.4 kHz（正文出现的符号速率量级，证据里没有）"
+    ]
+  },
+  "evidence": {
+    "signal": [
+      {
+        "key": "snr_db",
+        "value": 10.02,
+        "unit": "dB",
+        "source": "M1",
+        "confidence": 0.66
+      }
+    ],
+    "classification": [
+      {
+        "key": "modulation",
+        "value": "qpsk",
+        "unit": "",
+        "source": "M2",
+        "confidence": 0.91
+      }
+    ],
+    "frame": [
+      {
+        "key": "frames",
+        "value": 6,
+        "unit": "帧",
+        "source": "M5",
+        "confidence": 0.9
+      }
+    ],
+    "cyclostationary": [
+      {
+        "key": "alpha_peak_hz",
+        "value": 1000.09,
+        "unit": "Hz",
+        "source": "M8",
+        "confidence": 0.7
+      }
+    ]
+  },
+  "prompt_preview": "（离线确定性计划，不调用 LLM；无 prompt。）",
+  "warnings": [
+    "没有可用 LLM：mode=offline，stop_reason=no_llm，结论由固定计划生成。",
+    "grounded=false：2 个数字在证据里找不到出处，已在界面上单独列出。"
+  ]
+}

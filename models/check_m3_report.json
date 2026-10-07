@@ -1,0 +1,414 @@
+{
+  "ber_table": [
+    {
+      "modulation": "bpsk",
+      "snr_db": 0.0,
+      "evm_percent": 91.15769902804452,
+      "timing_metric": 0.766207958003909,
+      "carrier_metric": 0.9017021877678888,
+      "ber": 0.48951612903225805,
+      "symbols": 21731,
+      "bits": 21731,
+      "verdict": "high"
+    },
+    {
+      "modulation": "bpsk",
+      "snr_db": 5.0,
+      "evm_percent": 49.73659418294442,
+      "timing_metric": 0.809004823461126,
+      "carrier_metric": 0.9435175918989999,
+      "ber": 0.0064516129032258064,
+      "symbols": 8695,
+      "bits": 8695,
+      "verdict": "ok"
+    },
+    {
+      "modulation": "bpsk",
+      "snr_db": 10.0,
+      "evm_percent": 30.06276201246542,
+      "timing_metric": 0.8759819251916888,
+      "carrier_metric": 0.9727661235108148,
+      "ber": 0.0,
+      "symbols": 8694,
+      "bits": 8694,
+      "verdict": "ok"
+    },
+    {
+      "modulation": "bpsk",
+      "snr_db": 15.0,
+      "evm_percent": 17.645869201363652,
+      "timing_metric": 0.9149206975106583,
+      "carrier_metric": 0.9912600168861626,
+      "ber": 0.0,
+      "symbols": 8694,
+      "bits": 8694,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "bpsk",
+      "snr_db": 20.0,
+      "evm_percent": 10.67194738366681,
+      "timing_metric": 0.9299161461611732,
+      "carrier_metric": 0.9971748966527355,
+      "ber": 0.0,
+      "symbols": 8694,
+      "bits": 8694,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 0.0,
+      "evm_percent": 61.429870047365256,
+      "timing_metric": 0.7629427697571323,
+      "carrier_metric": 0.9243097749490818,
+      "ber": 0.48135593220338985,
+      "symbols": 2958,
+      "bits": 5916,
+      "verdict": "high"
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 5.0,
+      "evm_percent": 58.06792765123036,
+      "timing_metric": 0.7744612284420089,
+      "carrier_metric": 0.9261971735352907,
+      "ber": 0.4859369705184683,
+      "symbols": 2957,
+      "bits": 5914,
+      "verdict": "high"
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 10.0,
+      "evm_percent": 30.5767909052223,
+      "timing_metric": 0.9028838120246178,
+      "carrier_metric": 0.9725447403886982,
+      "ber": 0.002649769585253456,
+      "symbols": 4355,
+      "bits": 8710,
+      "verdict": "ok"
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 15.0,
+      "evm_percent": 18.514582545415355,
+      "timing_metric": 0.9456077135695357,
+      "carrier_metric": 0.9909846718467376,
+      "ber": 0.0003456221198156682,
+      "symbols": 4354,
+      "bits": 8708,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 20.0,
+      "evm_percent": 12.172904725048342,
+      "timing_metric": 0.9626624927378312,
+      "carrier_metric": 0.9968450576515843,
+      "ber": 0.0009216589861751152,
+      "symbols": 4354,
+      "bits": 8708,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "8psk",
+      "snr_db": 0.0,
+      "evm_percent": 48.13085810439438,
+      "timing_metric": 0.7663796246701179,
+      "carrier_metric": 0.9596437018298193,
+      "ber": 0.4870280287236507,
+      "symbols": 2907,
+      "bits": 8721,
+      "verdict": "high"
+    },
+    {
+      "modulation": "8psk",
+      "snr_db": 5.0,
+      "evm_percent": 39.191902088529915,
+      "timing_metric": 0.8243835416984704,
+      "carrier_metric": 0.967916458170319,
+      "ber": 0.4223681179451739,
+      "symbols": 2908,
+      "bits": 8724,
+      "verdict": "high"
+    },
+    {
+      "modulation": "8psk",
+      "snr_db": 10.0,
+      "evm_percent": 28.90927548890406,
+      "timing_metric": 0.900501618518435,
+      "carrier_metric": 0.9749312388989754,
+      "ber": 0.17703294171849804,
+      "symbols": 2908,
+      "bits": 8724,
+      "verdict": "high"
+    },
+    {
+      "modulation": "8psk",
+      "snr_db": 15.0,
+      "evm_percent": 18.59832027043463,
+      "timing_metric": 0.9428322793107363,
+      "carrier_metric": 0.990596761252299,
+      "ber": 0.002533978346003225,
+      "symbols": 2908,
+      "bits": 8724,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "8psk",
+      "snr_db": 20.0,
+      "evm_percent": 12.787820743830663,
+      "timing_metric": 0.9592018765596919,
+      "carrier_metric": 0.9965366688474506,
+      "ber": 0.005413499193734163,
+      "symbols": 2908,
+      "bits": 8724,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "16qam",
+      "snr_db": 0.0,
+      "evm_percent": 39.20758628515015,
+      "timing_metric": 0.768634132005326,
+      "carrier_metric": 0.9605933426749328,
+      "ber": 0.4891705069124424,
+      "symbols": 5409,
+      "bits": 21636,
+      "verdict": "high"
+    },
+    {
+      "modulation": "16qam",
+      "snr_db": 5.0,
+      "evm_percent": 36.79519581142203,
+      "timing_metric": 0.805005911245933,
+      "carrier_metric": 0.9627008740284762,
+      "ber": 0.48744239631336406,
+      "symbols": 5409,
+      "bits": 21636,
+      "verdict": "high"
+    },
+    {
+      "modulation": "16qam",
+      "snr_db": 10.0,
+      "evm_percent": 27.46836661774271,
+      "timing_metric": 0.8253843883326749,
+      "carrier_metric": 0.9725791030852656,
+      "ber": 0.2870967741935484,
+      "symbols": 2184,
+      "bits": 8736,
+      "verdict": "high"
+    },
+    {
+      "modulation": "16qam",
+      "snr_db": 15.0,
+      "evm_percent": 17.583989765297186,
+      "timing_metric": 0.8447583043994044,
+      "carrier_metric": 0.9858859435004043,
+      "ber": 0.00771889400921659,
+      "symbols": 2184,
+      "bits": 8736,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "16qam",
+      "snr_db": 20.0,
+      "evm_percent": 11.285991928861351,
+      "timing_metric": 0.8529447602236543,
+      "carrier_metric": 0.9945150001784308,
+      "ber": 0.0010368663594470047,
+      "symbols": 2184,
+      "bits": 8736,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 0.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.48974654377880183,
+      "symbols": 23146,
+      "bits": 23146,
+      "verdict": "high"
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 5.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.10509333947914266,
+      "symbols": 8680,
+      "bits": 8680,
+      "verdict": "high"
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 10.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.0021894445724821385,
+      "symbols": 8680,
+      "bits": 8680,
+      "verdict": "ok"
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 15.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.0,
+      "symbols": 8680,
+      "bits": 8680,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 20.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.0,
+      "symbols": 8680,
+      "bits": 8680,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "4fsk",
+      "snr_db": 0.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.48464203233256353,
+      "symbols": 17360,
+      "bits": 34720,
+      "verdict": "high"
+    },
+    {
+      "modulation": "4fsk",
+      "snr_db": 5.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.48538773148148145,
+      "symbols": 3472,
+      "bits": 6944,
+      "verdict": "high"
+    },
+    {
+      "modulation": "4fsk",
+      "snr_db": 10.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.028123559243891195,
+      "symbols": 4340,
+      "bits": 8680,
+      "verdict": "high"
+    },
+    {
+      "modulation": "4fsk",
+      "snr_db": 15.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.0004610419548178884,
+      "symbols": 4340,
+      "bits": 8680,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "4fsk",
+      "snr_db": 20.0,
+      "evm_percent": NaN,
+      "timing_metric": 1.0,
+      "carrier_metric": 1.0,
+      "ber": 0.0,
+      "symbols": 4340,
+      "bits": 8680,
+      "verdict": "PASS"
+    }
+  ],
+  "tracking": {
+    "qpsk": {
+      "ber_m3": 0.0009216589861751152,
+      "ber_no_tracking": 0.4949261992619926,
+      "improvement": 536.994926199262,
+      "verdict": "PASS"
+    },
+    "16qam": {
+      "ber_m3": 0.0010368663594470047,
+      "ber_no_tracking": 0.4208948339483395,
+      "improvement": 405.92968429684294,
+      "verdict": "PASS"
+    }
+  },
+  "llr_calibration": {
+    "rows": [
+      {
+        "snr_db": 0.0,
+        "predicted": 0.0675837101413525,
+        "measured": 0.48581471252824504,
+        "expected_errors": 269.9969220147033,
+        "observed_errors": 1940.829776550339,
+        "ratio": 7.1883403783567825,
+        "verdict": "ok"
+      },
+      {
+        "snr_db": 5.0,
+        "predicted": 0.007991062150424662,
+        "measured": 0.007949308755760368,
+        "expected_errors": 69.47429433579201,
+        "observed_errors": 69.11129032258064,
+        "ratio": 0.9947749881206875,
+        "verdict": "ok"
+      },
+      {
+        "snr_db": 10.0,
+        "predicted": 0.0002980602565396883,
+        "measured": 0.0,
+        "expected_errors": 2.5913358703560503,
+        "observed_errors": 0.0,
+        "ratio": 0.38590134588095665,
+        "verdict": "PASS"
+      },
+      {
+        "snr_db": 15.0,
+        "predicted": 0.00023404426382387216,
+        "measured": 0.0,
+        "expected_errors": 2.0347808296847445,
+        "observed_errors": 0.0,
+        "ratio": 0.4914534211308318,
+        "verdict": "PASS"
+      },
+      {
+        "snr_db": 20.0,
+        "predicted": 0.00018941026306167286,
+        "measured": 0.0,
+        "expected_errors": 1.6467328270581838,
+        "observed_errors": 0.0,
+        "ratio": 0.6072630505498917,
+        "verdict": "PASS"
+      }
+    ],
+    "ratio_range": [
+      0.3,
+      3.0
+    ]
+  },
+  "criteria": {
+    "ber_target": {
+      "15.0": 0.01,
+      "20.0": 0.01
+    },
+    "tracking_ber": 0.005,
+    "tracking_gain": 100.0,
+    "llr_ratio_range": [
+      0.3,
+      3.0
+    ]
+  },
+  "elapsed_s": 14.2
+}

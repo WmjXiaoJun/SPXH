@@ -1,0 +1,102 @@
+{
+  "path": "data/demo/noise_only_000.sigmf-meta",
+  "generated_at": "2026-10-05T19:33:30",
+  "mode": "offline",
+  "model": "offline-rule-based",
+  "headline": "未检出有效调制：SNR 约 −3.1 dB，分类门控判定拒识（reject），OOD 分数 9.41 远超拒识界，样本近似纯噪声。",
+  "confidence": 0.22,
+  "sections": [
+    {
+      "id": "signal",
+      "title": "信号与参数",
+      "text": "M1 的 SNR 为负值，符号速率 149.2 Hz 与载频 402.31 Hz 的置信度仅 0.12 / 0.18，属于噪声上的随机起伏，不应解释为信号。",
+      "evidence": [
+        {
+          "key": "snr_db",
+          "value": -3.1,
+          "unit": "dB",
+          "source": "M1",
+          "confidence": 0.2
+        },
+        {
+          "key": "symbol_rate_hz",
+          "value": 149.2,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.12
+        },
+        {
+          "key": "cfo_hz",
+          "value": 402.31,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.18
+        }
+      ]
+    },
+    {
+      "id": "classify",
+      "title": "识别与门控",
+      "text": "分类最高概率仅 0.223，门控判为 reject；OOD 分数 9.41 且 is_outlier=true，样本远离训练分布，不做调制判决。",
+      "evidence": [
+        {
+          "key": "gate",
+          "value": "reject",
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.223
+        },
+        {
+          "key": "ood_score",
+          "value": 9.41,
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.223
+        },
+        {
+          "key": "ood_is_outlier",
+          "value": true,
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.9
+        }
+      ]
+    },
+    {
+      "id": "frame",
+      "title": "帧同步与帧头 CRC",
+      "text": "未检出 Barker-13 前导，无法锁定帧起点；没有帧头，帧头 CRC-8 无从评估。",
+      "evidence": [
+        {
+          "key": "locked",
+          "value": false,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0.9
+        },
+        {
+          "key": "correlation_peak",
+          "value": 0.31,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0.9
+        }
+      ]
+    }
+  ],
+  "uncertainties": [
+    "Welch 平均段数仅 3（nperseg=1024），谱估计方差偏大",
+    "OOD 分数 9.41 超过拒识界，任何调制结论都不可信",
+    "所有参数估计置信度均低于 0.20"
+  ],
+  "next_actions": [
+    "确认输入数据是否选错（本案例应作为纯噪声对照）",
+    "如需检出弱信号，提高采样时长并降低判决门限后重跑",
+    "检查前端「重试全部」以外的上游数据准备步骤"
+  ],
+  "prompt_preview": "[系统] 离线确定性渲染。\n[证据] M1: snr_db=-3.1, symbol_rate_hz=149.2(0.12), cfo_hz=402.31(0.18)\n        M2: gate=reject, ood=9.41(is_outlier=true), confidence=0.223\n        M5: locked=false, correlation_peak=0.31\n[要求] 结论必须是「未检出有效调制」，不得虚构信号参数。",
+  "warnings": [
+    "置信度合成值 0.22 低于 0.30，报告结论仅供参考",
+    "门控为 reject：分类结果不可用于下游解调 / 帧同步"
+  ]
+}

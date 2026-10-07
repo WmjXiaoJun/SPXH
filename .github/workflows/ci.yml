@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: pytest + 验收自检 (${{ matrix.os }} / Python 3.11)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev,ml]"
+
+      # 输出一律重定向到文件：大量 stdout 直接写管道有被打断的风险
+      # （本项目的 M9 报告记录过这个坑：pytest 跑到 84% 被管道打断，重定向后 exit 0）。
+      - name: Run tests
+        shell: bash
+        run: |
+          python -m pytest -q > pytest.log 2>&1
+          code=$?
+          tail -n 40 pytest.log
+          exit $code
+
+      - name: README numbers traceable
+        shell: bash
+        run: |
+          # 「实测数据」表里的每个数字都必须能在它引用的验收报告里找到
+          python scripts/check_readme_numbers.py > readme_numbers.log 2>&1 || { cat readme_numbers.log; exit 1; }
+          cat readme_numbers.log
+
+      - name: Acceptance checks (M0 / M5 / M7 / M12)
+        shell: bash
+        run: |
+          set -e
+          for cmd in "scripts/check_m0.py" "scripts/check_m5.py" "scripts/check_m7.py --part blind" "scripts/check_m7.py --part erasure" "scripts/check_m12.py --part erasure"; do
+            name=$(echo "$cmd" | tr ' /' '__')
+            echo "==> python $cmd"
+            # shellcheck disable=SC2086
+            python $cmd > "checks_$name.log" 2>&1 || { tail -n 60 "checks_$name.log"; exit 1; }
+            tail -n 12 "checks_$name.log"
+          done
+          # 更慢的曲线类检查（check_m1/m2/m3/m4/m6 与 check_m7 --part curves）不放进每次 CI：
+          # 它们是验收报告里的数字来源，需要时本地跑或按 tag 触发。
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-${{ matrix.os }}
+          path: |
+            pytest.log
+            checks_*.log
+            readme_numbers.log
+          if-no-files-found: ignore

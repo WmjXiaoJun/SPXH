@@ -1,0 +1,806 @@
+{
+  "updated_at": "2026-10-04T16:47:10",
+  "report_path": "models/check_m4_report.json",
+  "catalogue": [
+    {
+      "id": "uncoded",
+      "name": "无编码",
+      "params": "—",
+      "rate": 1.0,
+      "note": "基线（BPSK 硬判决）"
+    },
+    {
+      "id": "conv_hard",
+      "name": "卷积码 Viterbi（硬判决）",
+      "params": "K=7, r=1/2, (133,171)8",
+      "rate": 0.5,
+      "note": "Hamming 距离度量"
+    },
+    {
+      "id": "conv_soft",
+      "name": "卷积码 Viterbi（软判决）",
+      "params": "K=7, r=1/2, (133,171)8",
+      "rate": 0.5,
+      "note": "吃 M3 的 LLR 尺度"
+    },
+    {
+      "id": "rs",
+      "name": "Reed-Solomon",
+      "params": "RS(255,223) GF(2^8), t=16",
+      "rate": 0.8745098039215686,
+      "note": "纠正 16 个符号错误"
+    },
+    {
+      "id": "ccsds",
+      "name": "CCSDS 级联",
+      "params": "RS(255,223)+卷积 + 交织 I=5",
+      "rate": 0.4373,
+      "note": "内卷积 + 外 RS + 符号交织"
+    },
+    {
+      "id": "ldpc",
+      "name": "LDPC",
+      "params": "(1152,578) dv=3 dc=6, 归一化最小和",
+      "rate": 0.5017361111111112,
+      "note": "对数域迭代译码"
+    }
+  ],
+  "ebn0_db": [
+    0.0,
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0,
+    7.0
+  ],
+  "curves": {
+    "uncoded": {
+      "ber": [
+        0.07908,
+        0.057635,
+        0.037395,
+        0.022885,
+        0.012395,
+        0.00593,
+        0.00235,
+        0.00078
+      ],
+      "bler": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "conv_hard": {
+      "ber": [
+        0.356575,
+        0.233675,
+        0.11685,
+        0.0275,
+        0.007125,
+        0.00055,
+        7.5e-05,
+        7.5e-05
+      ],
+      "bler": [
+        1.0,
+        1.0,
+        1.0,
+        0.975,
+        0.575,
+        0.125,
+        0.0,
+        0.0
+      ]
+    },
+    "conv_soft": {
+      "ber": [
+        0.148,
+        0.040275,
+        0.00725,
+        7.5e-05,
+        7.5e-05,
+        7.5e-05,
+        7.5e-05,
+        7.5e-05
+      ],
+      "bler": [
+        1.0,
+        0.975,
+        0.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "rs": {
+      "ber": [
+        0.06649383408071749,
+        0.05671945067264574,
+        0.04154988789237668,
+        0.027991872197309416,
+        0.01688621076233184,
+        0.004624439461883408,
+        0.0005605381165919282,
+        0.00010510089686098655
+      ],
+      "bler": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.5,
+        0.0625,
+        0.0
+      ]
+    },
+    "ccsds": {
+      "ber": [
+        0.06053811659192825,
+        0.02413116591928251,
+        0.001625560538116592,
+        4.204035874439462e-05,
+        4.204035874439462e-05,
+        4.204035874439462e-05,
+        4.204035874439462e-05,
+        4.204035874439462e-05
+      ],
+      "bler": [
+        1.0,
+        1.0,
+        0.375,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "ldpc": {
+      "ber": [
+        0.1318771626297578,
+        0.06215397923875433,
+        0.0019463667820069203,
+        0.00012975778546712804,
+        0.00012975778546712804,
+        0.00012975778546712804,
+        0.00012975778546712804,
+        0.00012975778546712804
+      ],
+      "bler": [
+        1.0,
+        0.825,
+        0.075,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "metrics": {
+    "soft_gain_db": 2.91854512398441,
+    "soft_gain_db_at_1e-3": 2.333242588429068,
+    "soft_gain_note": "在 BER=1e-04 处比较 Viterbi 硬/软判决所需的 Eb/N0（1e-4 处样本少，1e-3 处更稳）",
+    "crossing_ebn0_db": {
+      "conv_hard@1e-4": 5.855612468858345,
+      "conv_soft@1e-4": 2.937067344873935,
+      "conv_hard@1e-3": 4.766601821355565,
+      "conv_soft@1e-3": 2.4333592329264975
+    },
+    "rs_random_correction": {
+      "n": 255,
+      "k": 223,
+      "t": 16,
+      "corrected_symbols": 16
+    },
+    "ber_zero_policy": "BER=0 的点用 95% 置信上界 3/N 表示，并在 detail[].ber_is_upper_bound 标记（对数图不能画 0）",
+    "rs_burst_demo": {
+      "burst_length_symbols": 32,
+      "interleave_depth": 5,
+      "per_codeword_errors_with_interleave": [
+        7,
+        7,
+        6,
+        6,
+        6
+      ],
+      "max_errors_per_codeword": 7,
+      "correctable": 16,
+      "recovered": true,
+      "without_interleave_recovered": false
+    },
+    "ccsds_interleave_depth": 5,
+    "ldpc": {
+      "n": 1152,
+      "k": 578,
+      "m": 574,
+      "rate": 0.5017361111111112,
+      "iterations": 50,
+      "alpha": 0.8,
+      "degree_histogram": {
+        "2": 12,
+        "3": 1140
+      }
+    },
+    "detail": {
+      "uncoded": [
+        {
+          "ebn0_db": 0.0,
+          "bit_errors": 15816,
+          "info_bits": 200000,
+          "block_errors": 1,
+          "blocks": 1,
+          "ber": 0.07908,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 1.0,
+          "bit_errors": 11527,
+          "info_bits": 200000,
+          "block_errors": 1,
+          "blocks": 1,
+          "ber": 0.057635,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 2.0,
+          "bit_errors": 7479,
+          "info_bits": 200000,
+          "block_errors": 1,
+          "blocks": 1,
+          "ber": 0.037395,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 3.0,
+          "bit_errors": 4577,
+          "info_bits": 200000,
+          "block_errors": 1,
+          "blocks": 1,
+          "ber": 0.022885,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 4.0,
+          "bit_errors": 2479,
+          "info_bits": 200000,
+          "block_errors": 1,
+          "blocks": 1,
+          "ber": 0.012395,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 5.0,
+          "bit_errors": 1186,
+          "info_bits": 200000,
+          "block_errors": 1,
+          "blocks": 1,
+          "ber": 0.00593,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 6.0,
+          "bit_errors": 470,
+          "info_bits": 200000,
+          "block_errors": 1,
+          "blocks": 1,
+          "ber": 0.00235,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 7.0,
+          "bit_errors": 156,
+          "info_bits": 200000,
+          "block_errors": 1,
+          "blocks": 1,
+          "ber": 0.00078,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        }
+      ],
+      "conv_hard": [
+        {
+          "ebn0_db": 0.0,
+          "bit_errors": 14263,
+          "info_bits": 40000,
+          "block_errors": 40,
+          "blocks": 40,
+          "ber": 0.356575,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 1.0,
+          "bit_errors": 9347,
+          "info_bits": 40000,
+          "block_errors": 40,
+          "blocks": 40,
+          "ber": 0.233675,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 2.0,
+          "bit_errors": 4674,
+          "info_bits": 40000,
+          "block_errors": 40,
+          "blocks": 40,
+          "ber": 0.11685,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 3.0,
+          "bit_errors": 1100,
+          "info_bits": 40000,
+          "block_errors": 39,
+          "blocks": 40,
+          "ber": 0.0275,
+          "ber_is_upper_bound": false,
+          "bler": 0.975
+        },
+        {
+          "ebn0_db": 4.0,
+          "bit_errors": 285,
+          "info_bits": 40000,
+          "block_errors": 23,
+          "blocks": 40,
+          "ber": 0.007125,
+          "ber_is_upper_bound": false,
+          "bler": 0.575
+        },
+        {
+          "ebn0_db": 5.0,
+          "bit_errors": 22,
+          "info_bits": 40000,
+          "block_errors": 5,
+          "blocks": 40,
+          "ber": 0.00055,
+          "ber_is_upper_bound": false,
+          "bler": 0.125
+        },
+        {
+          "ebn0_db": 6.0,
+          "bit_errors": 0,
+          "info_bits": 40000,
+          "block_errors": 0,
+          "blocks": 40,
+          "ber": 7.5e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 7.0,
+          "bit_errors": 0,
+          "info_bits": 40000,
+          "block_errors": 0,
+          "blocks": 40,
+          "ber": 7.5e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        }
+      ],
+      "conv_soft": [
+        {
+          "ebn0_db": 0.0,
+          "bit_errors": 5920,
+          "info_bits": 40000,
+          "block_errors": 40,
+          "blocks": 40,
+          "ber": 0.148,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 1.0,
+          "bit_errors": 1611,
+          "info_bits": 40000,
+          "block_errors": 39,
+          "blocks": 40,
+          "ber": 0.040275,
+          "ber_is_upper_bound": false,
+          "bler": 0.975
+        },
+        {
+          "ebn0_db": 2.0,
+          "bit_errors": 290,
+          "info_bits": 40000,
+          "block_errors": 24,
+          "blocks": 40,
+          "ber": 0.00725,
+          "ber_is_upper_bound": false,
+          "bler": 0.6
+        },
+        {
+          "ebn0_db": 3.0,
+          "bit_errors": 0,
+          "info_bits": 40000,
+          "block_errors": 0,
+          "blocks": 40,
+          "ber": 7.5e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 4.0,
+          "bit_errors": 0,
+          "info_bits": 40000,
+          "block_errors": 0,
+          "blocks": 40,
+          "ber": 7.5e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 5.0,
+          "bit_errors": 0,
+          "info_bits": 40000,
+          "block_errors": 0,
+          "blocks": 40,
+          "ber": 7.5e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 6.0,
+          "bit_errors": 0,
+          "info_bits": 40000,
+          "block_errors": 0,
+          "blocks": 40,
+          "ber": 7.5e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 7.0,
+          "bit_errors": 0,
+          "info_bits": 40000,
+          "block_errors": 0,
+          "blocks": 40,
+          "ber": 7.5e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        }
+      ],
+      "rs": [
+        {
+          "ebn0_db": 0.0,
+          "bit_errors": 1898,
+          "info_bits": 28544,
+          "block_errors": 16,
+          "blocks": 16,
+          "ber": 0.06649383408071749,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 1.0,
+          "bit_errors": 1619,
+          "info_bits": 28544,
+          "block_errors": 16,
+          "blocks": 16,
+          "ber": 0.05671945067264574,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 2.0,
+          "bit_errors": 1186,
+          "info_bits": 28544,
+          "block_errors": 16,
+          "blocks": 16,
+          "ber": 0.04154988789237668,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 3.0,
+          "bit_errors": 799,
+          "info_bits": 28544,
+          "block_errors": 16,
+          "blocks": 16,
+          "ber": 0.027991872197309416,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 4.0,
+          "bit_errors": 482,
+          "info_bits": 28544,
+          "block_errors": 16,
+          "blocks": 16,
+          "ber": 0.01688621076233184,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 5.0,
+          "bit_errors": 132,
+          "info_bits": 28544,
+          "block_errors": 8,
+          "blocks": 16,
+          "ber": 0.004624439461883408,
+          "ber_is_upper_bound": false,
+          "bler": 0.5
+        },
+        {
+          "ebn0_db": 6.0,
+          "bit_errors": 16,
+          "info_bits": 28544,
+          "block_errors": 1,
+          "blocks": 16,
+          "ber": 0.0005605381165919282,
+          "ber_is_upper_bound": false,
+          "bler": 0.0625
+        },
+        {
+          "ebn0_db": 7.0,
+          "bit_errors": 0,
+          "info_bits": 28544,
+          "block_errors": 0,
+          "blocks": 16,
+          "ber": 0.00010510089686098655,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        }
+      ],
+      "ccsds": [
+        {
+          "ebn0_db": 0.0,
+          "bit_errors": 4320,
+          "info_bits": 71360,
+          "block_errors": 8,
+          "blocks": 8,
+          "ber": 0.06053811659192825,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 1.0,
+          "bit_errors": 1722,
+          "info_bits": 71360,
+          "block_errors": 8,
+          "blocks": 8,
+          "ber": 0.02413116591928251,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 2.0,
+          "bit_errors": 116,
+          "info_bits": 71360,
+          "block_errors": 3,
+          "blocks": 8,
+          "ber": 0.001625560538116592,
+          "ber_is_upper_bound": false,
+          "bler": 0.375
+        },
+        {
+          "ebn0_db": 3.0,
+          "bit_errors": 0,
+          "info_bits": 71360,
+          "block_errors": 0,
+          "blocks": 8,
+          "ber": 4.204035874439462e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 4.0,
+          "bit_errors": 0,
+          "info_bits": 71360,
+          "block_errors": 0,
+          "blocks": 8,
+          "ber": 4.204035874439462e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 5.0,
+          "bit_errors": 0,
+          "info_bits": 71360,
+          "block_errors": 0,
+          "blocks": 8,
+          "ber": 4.204035874439462e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 6.0,
+          "bit_errors": 0,
+          "info_bits": 71360,
+          "block_errors": 0,
+          "blocks": 8,
+          "ber": 4.204035874439462e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 7.0,
+          "bit_errors": 0,
+          "info_bits": 71360,
+          "block_errors": 0,
+          "blocks": 8,
+          "ber": 4.204035874439462e-05,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        }
+      ],
+      "ldpc": [
+        {
+          "ebn0_db": 0.0,
+          "bit_errors": 3049,
+          "info_bits": 23120,
+          "block_errors": 40,
+          "blocks": 40,
+          "avg_iterations": 50.0,
+          "converged_blocks": 0,
+          "ber": 0.1318771626297578,
+          "ber_is_upper_bound": false,
+          "bler": 1.0
+        },
+        {
+          "ebn0_db": 1.0,
+          "bit_errors": 1437,
+          "info_bits": 23120,
+          "block_errors": 33,
+          "blocks": 40,
+          "avg_iterations": 44.2,
+          "converged_blocks": 7,
+          "ber": 0.06215397923875433,
+          "ber_is_upper_bound": false,
+          "bler": 0.825
+        },
+        {
+          "ebn0_db": 2.0,
+          "bit_errors": 45,
+          "info_bits": 23120,
+          "block_errors": 3,
+          "blocks": 40,
+          "avg_iterations": 11.75,
+          "converged_blocks": 39,
+          "ber": 0.0019463667820069203,
+          "ber_is_upper_bound": false,
+          "bler": 0.075
+        },
+        {
+          "ebn0_db": 3.0,
+          "bit_errors": 0,
+          "info_bits": 23120,
+          "block_errors": 0,
+          "blocks": 40,
+          "avg_iterations": 5.0,
+          "converged_blocks": 40,
+          "ber": 0.00012975778546712804,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 4.0,
+          "bit_errors": 0,
+          "info_bits": 23120,
+          "block_errors": 0,
+          "blocks": 40,
+          "avg_iterations": 3.2,
+          "converged_blocks": 40,
+          "ber": 0.00012975778546712804,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 5.0,
+          "bit_errors": 0,
+          "info_bits": 23120,
+          "block_errors": 0,
+          "blocks": 40,
+          "avg_iterations": 2.4,
+          "converged_blocks": 40,
+          "ber": 0.00012975778546712804,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 6.0,
+          "bit_errors": 0,
+          "info_bits": 23120,
+          "block_errors": 0,
+          "blocks": 40,
+          "avg_iterations": 1.75,
+          "converged_blocks": 40,
+          "ber": 0.00012975778546712804,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        },
+        {
+          "ebn0_db": 7.0,
+          "bit_errors": 0,
+          "info_bits": 23120,
+          "block_errors": 0,
+          "blocks": 40,
+          "avg_iterations": 1.2,
+          "converged_blocks": 40,
+          "ber": 0.00012975778546712804,
+          "ber_is_upper_bound": true,
+          "bler": 0.0
+        }
+      ]
+    },
+    "checks": [
+      {
+        "name": "软判决增益 >= 1.5 dB",
+        "value": 2.91854512398441,
+        "target": 1.5,
+        "pass": true
+      },
+      {
+        "name": "卷积码（软）在 4 dB 达到 BER <= 1e-4",
+        "value": 7.5e-05,
+        "target": 0.0001,
+        "pass": true
+      },
+      {
+        "name": "LDPC 在 4 dB 达到 BER <= 1e-3",
+        "value": 0.00012975778546712804,
+        "target": 0.001,
+        "pass": true
+      },
+      {
+        "name": "LDPC 在 5 dB 零误码",
+        "value": 0,
+        "target": 0.0,
+        "pass": true
+      },
+      {
+        "name": "卷积码（软）在 3 dB 零误码",
+        "value": 0,
+        "target": 0.0,
+        "pass": true
+      },
+      {
+        "name": "CCSDS 级联在 3 dB 零误码",
+        "value": 0,
+        "target": 0.0,
+        "pass": true
+      },
+      {
+        "name": "RS(255,223) 能纠正 16 个符号突发",
+        "value": 16,
+        "target": 16,
+        "pass": true
+      },
+      {
+        "name": "符号交织让 32 符号突发可纠（不交织时不可纠）",
+        "value": 1,
+        "target": 1,
+        "pass": true
+      }
+    ]
+  },
+  "notes": [
+    "信道是 BPSK + AWGN：这样把**编码增益**单独量出来，不受同步/估计误差污染；M3 的 LLR 可直接接同一条链。",
+    "RS(255,223) 单独用时性能差是正常的（符号级纠错没有内码保护），级联后才体现价值。",
+    "LDPC 用的是 Gallager 正则构造的 (1152,578) 码，实测 H 的秩为 574（比标称少 2），码率 0.5017；已如实记录。",
+    "CCSDS 链保留级联结构与标准卷积码，但未实现对偶基/随机化等互操作细节。",
+    "交织的价值在于把突发错误摊薄：32 符号突发在深度 5 交织后每个码字最多 7 个错（< t=16），不交织则单个码字 32 个错必然不可纠。"
+  ],
+  "elapsed_s": 73.5
+}

@@ -1,0 +1,175 @@
+{
+  "path": "data/demo/qpsk_snr+10.0_000.sigmf-meta",
+  "generated_at": "2026-10-05T19:30:00",
+  "mode": "offline",
+  "model": "offline-rule-based",
+  "headline": "QPSK，SNR 约 10.0 dB，符号速率 1000.0 Hz，载频偏移 43.7 Hz；帧同步锁定（6 帧 / 2 帧 CRC-16 通过），谱相关在 α=1000 Hz 处给出同源佐证。",
+  "confidence": 0.72,
+  "sections": [
+    {
+      "id": "signal",
+      "title": "信号与参数",
+      "text": "M1 估计给出 QPSK 类信号的符号速率 999.97 Hz（置信度 0.62）与载频偏移 43.72 Hz（置信度 0.81），SNR 约 10.02 dB；三者相互自洽，符号速率与 1 kHz 标称值一致。",
+      "evidence": [
+        {
+          "key": "modulation",
+          "value": "qpsk",
+          "unit": "",
+          "source": "M1",
+          "confidence": 0.62
+        },
+        {
+          "key": "snr_db",
+          "value": 10.02,
+          "unit": "dB",
+          "source": "M1",
+          "confidence": 0.66
+        },
+        {
+          "key": "symbol_rate_hz",
+          "value": 999.97,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.62
+        },
+        {
+          "key": "cfo_hz",
+          "value": 43.72,
+          "unit": "Hz",
+          "source": "M1",
+          "confidence": 0.81
+        }
+      ]
+    },
+    {
+      "id": "classify",
+      "title": "识别与门控",
+      "text": "分类器以 0.91 的概率判为 QPSK，门控为 ml（未触发物理回退），OOD 分数 2.71 在阈值内，结果可采信。",
+      "evidence": [
+        {
+          "key": "classify_modulation",
+          "value": "qpsk",
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.91
+        },
+        {
+          "key": "gate",
+          "value": "ml",
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.91
+        },
+        {
+          "key": "ood_score",
+          "value": 2.71,
+          "unit": "",
+          "source": "M2",
+          "confidence": 0.91
+        }
+      ]
+    },
+    {
+      "id": "frame",
+      "title": "帧同步与帧头 CRC",
+      "text": "Barker-13 相关峰 0.970，帧同步锁定；连续解析 6 帧，帧头 CRC-8 通过，载荷 CRC-16-CCITT 通过 2 帧，其余 4 帧为尽力而为解析。",
+      "evidence": [
+        {
+          "key": "locked",
+          "value": true,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0.97
+        },
+        {
+          "key": "frames",
+          "value": 6,
+          "unit": "帧",
+          "source": "M5",
+          "confidence": 0.9
+        },
+        {
+          "key": "frames_crc_ok",
+          "value": 2,
+          "unit": "帧",
+          "source": "M5",
+          "confidence": 0.9
+        },
+        {
+          "key": "header_crc_ok",
+          "value": true,
+          "unit": "",
+          "source": "M5",
+          "confidence": 0.95
+        }
+      ]
+    },
+    {
+      "id": "spectral",
+      "title": "谱相关佐证",
+      "text": "双频平面在 α≈1000 Hz 处出现强峰，与 M1 的符号速率估计吻合；f 轴峰值位置与载频偏移同号，可作为参数估计的独立佐证。",
+      "evidence": [
+        {
+          "key": "alpha_peak_hz",
+          "value": 1000.09,
+          "unit": "Hz",
+          "source": "M8",
+          "confidence": 0.7
+        },
+        {
+          "key": "symbol_rate_hz",
+          "value": 1000.09,
+          "unit": "Hz",
+          "source": "M8",
+          "confidence": 0.7
+        },
+        {
+          "key": "cfo_ridge_hz",
+          "value": 32,
+          "unit": "Hz",
+          "source": "M8",
+          "confidence": 0.4
+        }
+      ]
+    },
+    {
+      "id": "decode",
+      "title": "盲识别与译码",
+      "text": "M7 盲识别判定帧头 fec=none、interleave=false，不需要盲长度恢复；CRC-16 失败的 4 帧更可能是低 SNR 下的符号判决错误，而非编码配置错误。",
+      "evidence": [
+        {
+          "key": "fec",
+          "value": "none",
+          "unit": "",
+          "source": "M7",
+          "confidence": 0.8
+        },
+        {
+          "key": "interleave",
+          "value": false,
+          "unit": "",
+          "source": "M7",
+          "confidence": 0.8
+        },
+        {
+          "key": "blind_length_recovered",
+          "value": false,
+          "unit": "",
+          "source": "M7",
+          "confidence": 0.8
+        }
+      ]
+    }
+  ],
+  "uncertainties": [
+    "符号速率置信度仅 0.62，脉冲成形滤波器与多径会引入 1 Hz 级偏差",
+    "6 帧中仅 2 帧载荷 CRC-16 通过，其余 4 帧载荷完整性存疑"
+  ],
+  "next_actions": [
+    "换用 20 dB 案例复核符号速率与载频偏移",
+    "对 4 个 CRC 失败帧逐字节对账，确认是判决错误还是编码假设错误",
+    "打开谱相关峰值表，核对 α 谐波是否成整数倍"
+  ],
+  "prompt_preview": "[系统] 你是射频信号分析员。只允许使用下面提供的结构化证据，不得编造任何数值。\n[证据] M1: snr_db=10.02, symbol_rate_hz=999.97(0.62), cfo_hz=43.72(0.81)\n        M2: modulation=qpsk, gate=ml, ood=2.71, confidence=0.91\n        M5: locked=true, frames=6, frames_crc_ok=2, header_crc_ok=true\n        M8: alpha_peak_hz=1000.09, cfo_ridge_hz=32.0\n[要求] 输出 headline + sections（每节附 evidence 表）+ uncertainties + next_actions，中文，不要复述提示词。",
+  "warnings": []
+}

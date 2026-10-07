@@ -1,0 +1,111 @@
+{
+  "global": {
+    "core:datatype": "cf32_le",
+    "core:sample_rate": 8000.0,
+    "core:version": "1.0.0",
+    "core:description": "SPXH synthetic 8psk",
+    "core:author": "SPXH",
+    "core:hw": "SPXH synth",
+    "core:license": "MIT",
+    "core:num_channels": 1
+  },
+  "captures": [
+    {
+      "core:sample_start": 0,
+      "core:frequency": 0.0
+    }
+  ],
+  "annotations": [
+    {
+      "core:sample_start": 0,
+      "core:sample_count": 1552,
+      "core:label": "frame0:8psk:payload64B",
+      "spxh:frame_index": 0,
+      "spxh:start_bit": 0,
+      "spxh:payload_hex": "f46334b88274b4537993083cda2cbefce57b102d94089751463f83a4d257dec9e151c5a3ac89b1de76095f0c46221e64b23dda92c406197029387e63dc786c5f",
+      "spxh:crc": 29241
+    },
+    {
+      "core:sample_start": 1544,
+      "core:sample_count": 1552,
+      "core:label": "frame1:8psk:payload64B",
+      "spxh:frame_index": 1,
+      "spxh:start_bit": 581,
+      "spxh:payload_hex": "4310470a974f611b948aeb8ae17a9d7a20d249f51141c93d2b1b51d96045d441a5289a243b914a2ff1b6d665691ba1315afd4be59b0257d088dcf7cd16b1486c",
+      "spxh:crc": 22365
+    },
+    {
+      "core:sample_start": 3096,
+      "core:sample_count": 1552,
+      "core:label": "frame2:8psk:payload64B",
+      "spxh:frame_index": 2,
+      "spxh:start_bit": 1162,
+      "spxh:payload_hex": "2801c70798018441bb701172c7684597347b2c73d596b19a9b4feb60d77c98a555120007d9a64ee95a40358962e8732696e3c0d0123a135f5d0c28e0e9e5dc48",
+      "spxh:crc": 37066
+    },
+    {
+      "core:sample_start": 4648,
+      "core:sample_count": 1552,
+      "core:label": "frame3:8psk:payload64B",
+      "spxh:frame_index": 3,
+      "spxh:start_bit": 1743,
+      "spxh:payload_hex": "26c9ade41dd44b040a37d66e9f517a2e32e1ab6f090009657ab0bffcbc02b064b75de3c1efe1e19de74456633ebdc7733415cc13cb057a9bf5618c658e751a39",
+      "spxh:crc": 22416
+    },
+    {
+      "core:sample_start": 6192,
+      "core:sample_count": 1552,
+      "core:label": "frame4:8psk:payload64B",
+      "spxh:frame_index": 4,
+      "spxh:start_bit": 2324,
+      "spxh:payload_hex": "46d5c5290dfb4c22d95aafe5ff4e4c5413d588dff28f9a189444d21145afa75dd8b41df7a34fce7547276bb3c7a30fb8ede3409d8257f5ddf8837053f019450d",
+      "spxh:crc": 45964
+    },
+    {
+      "core:sample_start": 7744,
+      "core:sample_count": 1552,
+      "core:label": "frame5:8psk:payload64B",
+      "spxh:frame_index": 5,
+      "spxh:start_bit": 2905,
+      "spxh:payload_hex": "a9843d269cb3c2f43dd95d1a279158b8929d0d733d4420fd6d4d17f3372d681e38344003006d0160734fc86a0bb8938027fc5a2c6c094abfc0c6e3886db99f4f",
+      "spxh:crc": 55179
+    },
+    {
+      "core:sample_start": 9296,
+      "core:sample_count": 1552,
+      "core:label": "frame6:8psk:payload64B",
+      "spxh:frame_index": 6,
+      "spxh:start_bit": 3486,
+      "spxh:payload_hex": "830b291d38ed2c7319d180e71b61b246b39fba4df47cfc72285616bf15a88d82d27d699dcaaba590b14d9877bbd745b4d7840ae025eae73d18922cb5ffd267a1",
+      "spxh:crc": 35580
+    },
+    {
+      "core:sample_start": 10840,
+      "core:sample_count": 1552,
+      "core:label": "frame7:8psk:payload64B",
+      "spxh:frame_index": 7,
+      "spxh:start_bit": 4067,
+      "spxh:payload_hex": "2770b035e9d11317f5d856b8053f6d9c4a54b480df7c837573896b6367ce852236f6f86066bfb64171333aea07889b104368b7fbfc7d505f71a32b4df01a5e67",
+      "spxh:crc": 52235
+    }
+  ],
+  "spxh:ground_truth": {
+    "modulation": "8psk",
+    "symbol_rate": 1000.0,
+    "sample_rate": 8000.0,
+    "sps": 8,
+    "snr_db": 0.0,
+    "cfo_hz": 0.0,
+    "num_symbols": 1550,
+    "num_bits": 4650,
+    "num_frames": 8,
+    "payload_bytes": 512,
+    "has_arrays": {
+      "bits": true,
+      "symbol_indices": true,
+      "symbols": true,
+      "tone_hz": false,
+      "clean": true
+    }
+  }
+}

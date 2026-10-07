@@ -1,0 +1,377 @@
+{
+  "updated_at": "2026-10-06T01:47:32",
+  "rows": [
+    {
+      "hole_symbols": 0,
+      "where": "payload",
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 0,
+      "burst_ranges": [],
+      "worst_bit_errors": 0
+    },
+    {
+      "hole_symbols": 8,
+      "where": "payload",
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 17,
+      "burst_ranges": [
+        [
+          1533,
+          1543
+        ]
+      ],
+      "worst_bit_errors": 0
+    },
+    {
+      "hole_symbols": 12,
+      "where": "payload",
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 23,
+      "burst_ranges": [
+        [
+          1531,
+          1546
+        ]
+      ],
+      "worst_bit_errors": 0
+    },
+    {
+      "hole_symbols": 16,
+      "where": "payload",
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 25,
+      "burst_ranges": [
+        [
+          1530,
+          1547
+        ]
+      ],
+      "worst_bit_errors": 0
+    },
+    {
+      "hole_symbols": 20,
+      "where": "payload",
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 32,
+      "burst_ranges": [
+        [
+          1528,
+          1546
+        ],
+        [
+          1544,
+          1550
+        ]
+      ],
+      "worst_bit_errors": 0
+    }
+  ],
+  "awgn_control": {
+    "frames": 8,
+    "frames_crc_ok": 8,
+    "payload_bytes_total": 480,
+    "payload_bytes_exact": 480,
+    "candidates_failed": 0,
+    "all_ok": true,
+    "truth_frame_offset": 0,
+    "erasures_total": 0,
+    "burst_ranges": [],
+    "worst_bit_errors": 0
+  },
+  "header_hit_control": {
+    "auto": {
+      "frames": 8,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 420,
+      "payload_bytes_exact": 420,
+      "candidates_failed": 0,
+      "all_ok": false,
+      "truth_frame_offset": 0,
+      "erasures_total": 21,
+      "burst_ranges": [
+        [
+          1361,
+          1378
+        ]
+      ],
+      "worst_bit_errors": 480
+    },
+    "plain": {
+      "frames": 7,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 420,
+      "payload_bytes_exact": 240,
+      "candidates_failed": 1,
+      "all_ok": false,
+      "truth_frame_offset": 0,
+      "erasures_total": 0,
+      "burst_ranges": [],
+      "worst_bit_errors": 59
+    }
+  },
+  "hardening_compare": [
+    {
+      "factor": 3.0,
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "sync_frames": 8,
+      "sync_crc": 8,
+      "sync_erase_frames": 8,
+      "sync_erase_crc": 8,
+      "erasures": 33
+    },
+    {
+      "factor": 6.0,
+      "plain_frames": 2,
+      "plain_crc": 0,
+      "sync_frames": 1,
+      "sync_crc": 0,
+      "sync_erase_frames": 1,
+      "sync_erase_crc": 0,
+      "erasures": 0
+    },
+    {
+      "factor": 10.0,
+      "plain_frames": 0,
+      "plain_crc": 0,
+      "sync_frames": 0,
+      "sync_crc": 0,
+      "sync_erase_frames": 0,
+      "sync_erase_crc": 0,
+      "erasures": 0
+    }
+  ],
+  "blank_control": [
+    {
+      "hole_symbols": 12,
+      "plain_crc": 8,
+      "auto_crc": 8
+    },
+    {
+      "hole_symbols": 20,
+      "plain_crc": 8,
+      "auto_crc": 8
+    }
+  ],
+  "strength_sweep": [
+    {
+      "factor": 1.0,
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 0,
+      "burst_ranges": []
+    },
+    {
+      "factor": 1.5,
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 31,
+      "burst_ranges": [
+        [
+          1528,
+          1534
+        ],
+        [
+          1535,
+          1538
+        ],
+        [
+          1536,
+          1538
+        ],
+        [
+          1537,
+          1539
+        ],
+        [
+          1539,
+          1542
+        ],
+        [
+          1540,
+          1542
+        ],
+        [
+          1540,
+          1542
+        ],
+        [
+          1541,
+          1543
+        ],
+        [
+          1541,
+          1545
+        ],
+        [
+          1543,
+          1545
+        ],
+        [
+          1545,
+          1549
+        ]
+      ]
+    },
+    {
+      "factor": 2.0,
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 32,
+      "burst_ranges": [
+        [
+          1528,
+          1546
+        ],
+        [
+          1544,
+          1550
+        ]
+      ]
+    },
+    {
+      "factor": 3.0,
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 33,
+      "burst_ranges": [
+        [
+          1527,
+          1550
+        ]
+      ]
+    },
+    {
+      "factor": 5.0,
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 33,
+      "burst_ranges": [
+        [
+          1527,
+          1550
+        ]
+      ]
+    }
+  ],
+  "low_snr_window": [
+    {
+      "snr_db": 9.0,
+      "factor": 2.0,
+      "plain_frames": 8,
+      "plain_crc": 6,
+      "auto_frames": 8,
+      "auto_crc": 6,
+      "auto_erasures": 18
+    },
+    {
+      "snr_db": 9.0,
+      "factor": 4.0,
+      "plain_frames": 8,
+      "plain_crc": 7,
+      "auto_frames": 8,
+      "auto_crc": 6,
+      "auto_erasures": 19
+    },
+    {
+      "snr_db": 10.0,
+      "factor": 2.0,
+      "plain_frames": 6,
+      "plain_crc": 5,
+      "auto_frames": 6,
+      "auto_crc": 6,
+      "auto_erasures": 17
+    },
+    {
+      "snr_db": 10.0,
+      "factor": 4.0,
+      "plain_frames": 8,
+      "plain_crc": 7,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 15
+    },
+    {
+      "snr_db": 11.0,
+      "factor": 2.0,
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 32
+    },
+    {
+      "snr_db": 11.0,
+      "factor": 4.0,
+      "plain_frames": 8,
+      "plain_crc": 8,
+      "auto_frames": 8,
+      "auto_crc": 8,
+      "auto_erasures": 33
+    }
+  ],
+  "checks": [
+    {
+      "name": "信号侧能**自动检出**载荷段突发（不告诉它坏在哪），并给出擦除位置",
+      "value": 4,
+      "target": 4,
+      "pass": true
+    },
+    {
+      "name": "同口径下：擦除仲裁（预算含 0 + CRC 定夺）不会比不标擦除更差",
+      "value": 3,
+      "target": 3,
+      "pass": true
+    },
+    {
+      "name": "低信噪比 + 突发窗口里，自动擦除把 CRC 通过帧数拉回来（无窗口时如实记录）",
+      "value": 2,
+      "target": 0,
+      "pass": true
+    },
+    {
+      "name": "同步侧抗突发（置零 + 环路冻结）对强干扰下帧结果的改善（本轮实测为 0，如实记录）",
+      "value": 0,
+      "target": 0,
+      "pass": true
+    },
+    {
+      "name": "同步侧抗突发不会让帧结果变差",
+      "value": 0,
+      "target": 0,
+      "pass": true
+    },
+    {
+      "name": "无洞（纯 AWGN）时检测器不虚报、不引入退化",
+      "value": 0,
+      "target": 0,
+      "pass": true
+    }
+  ],
+  "note": "洞 = 把指定位置的若干符号采样置零；擦除位置来自信号侧突发检测（滑动 RMS + 深度/边缘判据）"
+}

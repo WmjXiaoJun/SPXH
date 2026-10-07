@@ -1,0 +1,155 @@
+{
+  "updated_at": "2026-10-06T01:46:07",
+  "rows": [
+    {
+      "snr_db": 5.0,
+      "fec": "none",
+      "hard_frames": 2,
+      "hard_crc": 0,
+      "soft_frames": 2,
+      "soft_crc": 0,
+      "frames": 16
+    },
+    {
+      "snr_db": 5.0,
+      "fec": "conv",
+      "hard_frames": 0,
+      "hard_crc": 0,
+      "soft_frames": 3,
+      "soft_crc": 2,
+      "frames": 16
+    },
+    {
+      "snr_db": 5.0,
+      "fec": "ccsds",
+      "hard_frames": 1,
+      "hard_crc": 0,
+      "soft_frames": 1,
+      "soft_crc": 0,
+      "frames": 16
+    },
+    {
+      "snr_db": 6.0,
+      "fec": "none",
+      "hard_frames": 2,
+      "hard_crc": 0,
+      "soft_frames": 2,
+      "soft_crc": 0,
+      "frames": 16
+    },
+    {
+      "snr_db": 6.0,
+      "fec": "conv",
+      "hard_frames": 4,
+      "hard_crc": 4,
+      "soft_frames": 10,
+      "soft_crc": 10,
+      "frames": 16
+    },
+    {
+      "snr_db": 6.0,
+      "fec": "ccsds",
+      "hard_frames": 2,
+      "hard_crc": 1,
+      "soft_frames": 2,
+      "soft_crc": 1,
+      "frames": 16
+    },
+    {
+      "snr_db": 8.0,
+      "fec": "none",
+      "hard_frames": 13,
+      "hard_crc": 1,
+      "soft_frames": 14,
+      "soft_crc": 1,
+      "frames": 16
+    },
+    {
+      "snr_db": 8.0,
+      "fec": "conv",
+      "hard_frames": 11,
+      "hard_crc": 11,
+      "soft_frames": 12,
+      "soft_crc": 12,
+      "frames": 16
+    },
+    {
+      "snr_db": 8.0,
+      "fec": "ccsds",
+      "hard_frames": 12,
+      "hard_crc": 10,
+      "soft_frames": 14,
+      "soft_crc": 11,
+      "frames": 16
+    },
+    {
+      "snr_db": 10.0,
+      "fec": "none",
+      "hard_frames": 15,
+      "hard_crc": 8,
+      "soft_frames": 15,
+      "soft_crc": 8,
+      "frames": 16
+    },
+    {
+      "snr_db": 10.0,
+      "fec": "conv",
+      "hard_frames": 13,
+      "hard_crc": 13,
+      "soft_frames": 16,
+      "soft_crc": 16,
+      "frames": 16
+    },
+    {
+      "snr_db": 10.0,
+      "fec": "ccsds",
+      "hard_frames": 13,
+      "hard_crc": 13,
+      "soft_frames": 14,
+      "soft_crc": 14,
+      "frames": 16
+    },
+    {
+      "snr_db": 12.0,
+      "fec": "none",
+      "hard_frames": 16,
+      "hard_crc": 16,
+      "soft_frames": 16,
+      "soft_crc": 16,
+      "frames": 16
+    },
+    {
+      "snr_db": 12.0,
+      "fec": "conv",
+      "hard_frames": 14,
+      "hard_crc": 14,
+      "soft_frames": 16,
+      "soft_crc": 16,
+      "frames": 16
+    },
+    {
+      "snr_db": 12.0,
+      "fec": "ccsds",
+      "hard_frames": 14,
+      "hard_crc": 14,
+      "soft_frames": 16,
+      "soft_crc": 16,
+      "frames": 16
+    }
+  ],
+  "checks": [
+    {
+      "name": "低信噪比（<=8 dB）下软前导对**编码链路**的帧召回有实质提升",
+      "value": 20,
+      "target": 8,
+      "pass": true
+    },
+    {
+      "name": "高信噪比（>=10 dB）下软前导不引入退化",
+      "value": 8,
+      "target": 0,
+      "pass": true
+    }
+  ],
+  "note": "硬前导 = 13 位 Barker 必须全对；软前导 = 允许 <=2 位不符且软相关为正"
+}

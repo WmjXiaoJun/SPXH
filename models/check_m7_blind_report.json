@@ -1,0 +1,53 @@
+{
+  "updated_at": "2026-10-05T21:46:28",
+  "rows": [
+    {
+      "fec": "conv",
+      "declared_ok": false,
+      "blind_hit": {
+        "fec": "conv",
+        "interleave": false
+      },
+      "payload_match": true,
+      "pass": true
+    },
+    {
+      "fec": "rs",
+      "declared_ok": false,
+      "blind_hit": {
+        "fec": "rs",
+        "interleave": false
+      },
+      "payload_match": true,
+      "pass": true
+    },
+    {
+      "fec": "ccsds",
+      "declared_ok": false,
+      "blind_hit": {
+        "fec": "ccsds",
+        "interleave": false
+      },
+      "payload_match": true,
+      "pass": true
+    },
+    {
+      "fec": "ldpc",
+      "declared_ok": false,
+      "blind_hit": {
+        "fec": "ldpc",
+        "interleave": false
+      },
+      "payload_match": true,
+      "pass": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "帧头 fec 字段被打错后，盲搜索能把四种编码全部恢复",
+      "value": 4,
+      "target": 4,
+      "pass": true
+    }
+  ]
+}

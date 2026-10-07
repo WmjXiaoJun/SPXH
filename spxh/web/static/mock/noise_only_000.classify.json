@@ -1,0 +1,1 @@
+{"modulation":null,"probabilities":{"qpsk":0.223,"bpsk":0.191,"2fsk":0.171,"8psk":0.152,"16qam":0.141,"4fsk":0.122},"confidence":0.223,"gate":"reject","threshold":0.7,"calibrated":true,"ood":{"score":9.41,"is_outlier":true,"method":"mahalanobis"},"physical":null,"features":{"symbol_rate":149.2,"cfo_hz":402.31,"snr_db":-3.1},"warnings":["OOD 分数 9.41 超过拒识界，样本远离训练分布"]}

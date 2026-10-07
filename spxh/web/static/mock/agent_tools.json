@@ -1,0 +1,73 @@
+{
+  "tools": [
+    {
+      "name": "analyze",
+      "title": "参数估计",
+      "description": "盲估 Es/N0、载频偏移、符号速率（M1）",
+      "args": {
+        "path": "信号文件路径"
+      },
+      "returns": "snr_db / cfo_hz / symbol_rate_hz + 各自置信度"
+    },
+    {
+      "name": "spectrum",
+      "title": "功率谱",
+      "description": "Welch PSD 与峰值",
+      "args": {
+        "path": "..."
+      },
+      "returns": "峰值列表"
+    },
+    {
+      "name": "classify",
+      "title": "调制识别",
+      "description": "M2 分类 + 门控",
+      "args": {
+        "path": "..."
+      },
+      "returns": "modulation/confidence/gate/ood"
+    },
+    {
+      "name": "demod",
+      "title": "解调",
+      "description": "M3 定时/载波同步 + LLR",
+      "args": {
+        "path": "..."
+      },
+      "returns": "锁定状态/符号数/误码率(有真值时)"
+    },
+    {
+      "name": "frame",
+      "title": "帧同步与载荷",
+      "description": "M5 Barker 同步 + 帧头 CRC + 盲恢复",
+      "args": {
+        "path": "...",
+        "blind": "bool"
+      },
+      "returns": "帧数/CRC 通过/载荷字节"
+    },
+    {
+      "name": "ssca",
+      "title": "谱相关",
+      "description": "M8 双频平面（符号速率/载频脊线）",
+      "args": {
+        "path": "..."
+      },
+      "returns": "alpha 峰/脊线偏移"
+    },
+    {
+      "name": "cases",
+      "title": "案例列表",
+      "description": "列出可用信号文件",
+      "args": {
+        "dir": "目录"
+      },
+      "returns": "案例名列表"
+    }
+  ],
+  "budgets": {
+    "max_rounds": 6,
+    "max_tool_calls": 12,
+    "timeout_s": 120
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "enabled": true,
+  "base_url": "http://127.0.0.1:11434/v1",
+  "model": "qwen2.5:7b",
+  "temperature": 0.2,
+  "max_tokens": 1200,
+  "timeout_s": 40,
+  "api_key_set": true,
+  "api_key_hint": "sk-...7f3a",
+  "source": {
+    "enabled": "file",
+    "base_url": "file",
+    "api_key": "file",
+    "model": "file",
+    "temperature": "default",
+    "max_tokens": "default",
+    "timeout_s": "default"
+  },
+  "config_path": "models/llm_config.json",
+  "config_path_display": "models/llm_config.json",
+  "config_path_abs": "D:/SPXH/models/llm_config.json",
+  "env": {
+    "SPXH_LLM_BASE_URL": "已设置",
+    "SPXH_LLM_API_KEY": "已设置",
+    "SPXH_LLM_MODEL": "未设置"
+  },
+  "ready": true,
+  "presets": [
+    {
+      "id": "deepseek",
+      "label": "DeepSeek",
+      "base_url": "https://api.deepseek.com",
+      "model": "deepseek-chat",
+      "notes": "官方兼容 OpenAI 协议；base_url 用 https://api.deepseek.com（写 .../v1 也可以）。模型：deepseek-chat（对话）或 deepseek-reasoner（推理，不支持 JSON 模式，平台会自动降级重试）"
+    },
+    {
+      "id": "openai",
+      "label": "OpenAI",
+      "base_url": "https://api.openai.com/v1",
+      "model": "gpt-4o-mini",
+      "notes": "官方地址；也可填任何 OpenAI 兼容网关"
+    },
+    {
+      "id": "ollama",
+      "label": "本地 Ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "model": "qwen2.5:7b",
+      "notes": "先 ollama serve 并 ollama pull 模型；本地服务通常不需要 API Key（随便填一个即可绕过校验）"
+    },
+    {
+      "id": "custom",
+      "label": "自定义（OpenAI 兼容）",
+      "base_url": "",
+      "model": "",
+      "notes": "只要兼容 /chat/completions 与 /models 即可"
+    }
+  ]
+}

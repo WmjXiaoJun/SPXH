@@ -1,0 +1,14 @@
+# 统一换行符：仓库内一律 LF，避免 Windows / Linux 之间来回改整文件
+* text=auto eol=lf
+
+# 二进制资产不做换行转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.npz binary
+*.joblib binary
+*.sigmf-data binary
+*.sigmf-meta text eol=lf

@@ -1,0 +1,421 @@
+{
+  "updated_at": "2026-10-06T01:35:42",
+  "sync_table": [
+    {
+      "modulation": "bpsk",
+      "snr_db": 15.0,
+      "correlation_peak": 0.9453108679217294,
+      "peak_to_sidelobe_db": 13.086872583978577,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 8,
+      "payload_bytes_total": 512,
+      "payload_bytes_exact": 512,
+      "locked": true
+    },
+    {
+      "modulation": "bpsk",
+      "snr_db": 20.0,
+      "correlation_peak": 0.9535517617426833,
+      "peak_to_sidelobe_db": 12.792560121873638,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 8,
+      "payload_bytes_total": 512,
+      "payload_bytes_exact": 512,
+      "locked": true
+    },
+    {
+      "modulation": "bpsk",
+      "snr_db": 25.0,
+      "correlation_peak": 0.9559764914607849,
+      "peak_to_sidelobe_db": 12.608789162854277,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 8,
+      "payload_bytes_total": 512,
+      "payload_bytes_exact": 512,
+      "locked": true
+    },
+    {
+      "modulation": "bpsk",
+      "snr_db": 30.0,
+      "correlation_peak": 0.9565624576521681,
+      "peak_to_sidelobe_db": 12.51124507547642,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 8,
+      "payload_bytes_total": 512,
+      "payload_bytes_exact": 512,
+      "locked": true,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 15.0,
+      "correlation_peak": 0.9112967586574846,
+      "peak_to_sidelobe_db": 8.652267001552097,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 8,
+      "payload_bytes_total": 512,
+      "payload_bytes_exact": 512,
+      "locked": true
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 20.0,
+      "correlation_peak": 0.9365387082020479,
+      "peak_to_sidelobe_db": 8.960114858491933,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 8,
+      "payload_bytes_total": 512,
+      "payload_bytes_exact": 512,
+      "locked": true
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 25.0,
+      "correlation_peak": 0.9482388579409455,
+      "peak_to_sidelobe_db": 9.068292953168287,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 8,
+      "payload_bytes_total": 512,
+      "payload_bytes_exact": 512,
+      "locked": true
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 30.0,
+      "correlation_peak": 0.951893528930877,
+      "peak_to_sidelobe_db": 9.103504029178088,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 8,
+      "payload_bytes_total": 512,
+      "payload_bytes_exact": 512,
+      "locked": true,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "8psk",
+      "snr_db": 15.0,
+      "correlation_peak": 0.9515369377331514,
+      "peak_to_sidelobe_db": 6.870725192445223,
+      "ambiguity_rotation_deg": 180.0,
+      "frames": 7,
+      "frames_crc_ok": 4,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 256,
+      "locked": true
+    },
+    {
+      "modulation": "8psk",
+      "snr_db": 20.0,
+      "correlation_peak": 0.9677330480124237,
+      "peak_to_sidelobe_db": 6.774334727282398,
+      "ambiguity_rotation_deg": 225.0,
+      "frames": 7,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true
+    },
+    {
+      "modulation": "8psk",
+      "snr_db": 25.0,
+      "correlation_peak": 0.9739643097832735,
+      "peak_to_sidelobe_db": 6.647991501144105,
+      "ambiguity_rotation_deg": 225.0,
+      "frames": 7,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true
+    },
+    {
+      "modulation": "8psk",
+      "snr_db": 30.0,
+      "correlation_peak": 0.9767469665744651,
+      "peak_to_sidelobe_db": 6.584846864410569,
+      "ambiguity_rotation_deg": 225.0,
+      "frames": 7,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true,
+      "verdict": "known-limit"
+    },
+    {
+      "modulation": "16qam",
+      "snr_db": 15.0,
+      "correlation_peak": 0.9952011020047489,
+      "peak_to_sidelobe_db": 5.270959197620754,
+      "ambiguity_rotation_deg": 180.0,
+      "frames": 1,
+      "frames_crc_ok": 0,
+      "payload_bytes_total": 0,
+      "payload_bytes_exact": 0,
+      "locked": true
+    },
+    {
+      "modulation": "16qam",
+      "snr_db": 20.0,
+      "correlation_peak": 0.9759337884656256,
+      "peak_to_sidelobe_db": 5.193468133261345,
+      "ambiguity_rotation_deg": 180.0,
+      "frames": 2,
+      "frames_crc_ok": 0,
+      "payload_bytes_total": 64,
+      "payload_bytes_exact": 0,
+      "locked": true
+    },
+    {
+      "modulation": "16qam",
+      "snr_db": 25.0,
+      "correlation_peak": 0.9996221668029853,
+      "peak_to_sidelobe_db": 5.428225036613411,
+      "ambiguity_rotation_deg": 90.0,
+      "frames": 1,
+      "frames_crc_ok": 1,
+      "payload_bytes_total": 64,
+      "payload_bytes_exact": 64,
+      "locked": true
+    },
+    {
+      "modulation": "16qam",
+      "snr_db": 30.0,
+      "correlation_peak": 0.9998103291707313,
+      "peak_to_sidelobe_db": 5.440763233217679,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 2,
+      "frames_crc_ok": 2,
+      "payload_bytes_total": 128,
+      "payload_bytes_exact": 128,
+      "locked": true,
+      "verdict": "known-limit"
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 15.0,
+      "correlation_peak": 1.0,
+      "peak_to_sidelobe_db": 12.736441951743487,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 20.0,
+      "correlation_peak": 1.0,
+      "peak_to_sidelobe_db": 12.736441951743487,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 25.0,
+      "correlation_peak": 1.0,
+      "peak_to_sidelobe_db": 12.736441951743487,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 30.0,
+      "correlation_peak": 1.0,
+      "peak_to_sidelobe_db": 12.736441951743487,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true,
+      "verdict": "PASS"
+    },
+    {
+      "modulation": "4fsk",
+      "snr_db": 15.0,
+      "correlation_peak": 1.0,
+      "peak_to_sidelobe_db": 12.736441951743487,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 6,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 384,
+      "locked": true
+    },
+    {
+      "modulation": "4fsk",
+      "snr_db": 20.0,
+      "correlation_peak": 1.0,
+      "peak_to_sidelobe_db": 12.736441951743487,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true
+    },
+    {
+      "modulation": "4fsk",
+      "snr_db": 25.0,
+      "correlation_peak": 1.0,
+      "peak_to_sidelobe_db": 12.736441951743487,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true
+    },
+    {
+      "modulation": "4fsk",
+      "snr_db": 30.0,
+      "correlation_peak": 1.0,
+      "peak_to_sidelobe_db": 12.736441951743487,
+      "ambiguity_rotation_deg": 0.0,
+      "frames": 8,
+      "frames_crc_ok": 7,
+      "payload_bytes_total": 448,
+      "payload_bytes_exact": 448,
+      "locked": true,
+      "verdict": "PASS"
+    }
+  ],
+  "ambiguity": {
+    "rows": [
+      {
+        "modulation": "bpsk",
+        "injected_deg": 180.0,
+        "resolved_deg": 180.0,
+        "frames_crc_ok": 8,
+        "frames": 8,
+        "pass": true
+      },
+      {
+        "modulation": "qpsk",
+        "injected_deg": 90.0,
+        "resolved_deg": 90.0,
+        "frames_crc_ok": 8,
+        "frames": 8,
+        "pass": true
+      },
+      {
+        "modulation": "qpsk",
+        "injected_deg": 180.0,
+        "resolved_deg": 180.0,
+        "frames_crc_ok": 8,
+        "frames": 8,
+        "pass": true
+      },
+      {
+        "modulation": "qpsk",
+        "injected_deg": 270.0,
+        "resolved_deg": 270.0,
+        "frames_crc_ok": 8,
+        "frames": 8,
+        "pass": true
+      }
+    ],
+    "pass": true
+  },
+  "low_snr": [
+    {
+      "modulation": "bpsk",
+      "snr_db": 5.0,
+      "frames": 8,
+      "crc_ok": 0,
+      "crc_fail_rate": 1.0
+    },
+    {
+      "modulation": "bpsk",
+      "snr_db": 10.0,
+      "frames": 8,
+      "crc_ok": 8,
+      "crc_fail_rate": 0.0
+    },
+    {
+      "modulation": "bpsk",
+      "snr_db": 15.0,
+      "frames": 8,
+      "crc_ok": 8,
+      "crc_fail_rate": 0.0
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 5.0,
+      "frames": 0,
+      "crc_ok": 0,
+      "crc_fail_rate": 1.0
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 10.0,
+      "frames": 8,
+      "crc_ok": 5,
+      "crc_fail_rate": 0.375
+    },
+    {
+      "modulation": "qpsk",
+      "snr_db": 15.0,
+      "frames": 8,
+      "crc_ok": 8,
+      "crc_fail_rate": 0.0
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 5.0,
+      "frames": 1,
+      "crc_ok": 0,
+      "crc_fail_rate": 1.0
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 10.0,
+      "frames": 8,
+      "crc_ok": 1,
+      "crc_fail_rate": 0.875
+    },
+    {
+      "modulation": "2fsk",
+      "snr_db": 15.0,
+      "frames": 8,
+      "crc_ok": 7,
+      "crc_fail_rate": 0.125
+    }
+  ],
+  "criteria": {
+    "clean_snr_db": 30.0,
+    "frames": 8,
+    "payload_bytes": 64
+  },
+  "checks": [
+    {
+      "name": "30 dB 下 bpsk/qpsk/16qam/2fsk/4fsk 都能同步并逐字节还原载荷（8PSK 见已知局限）",
+      "value": 1,
+      "target": 1,
+      "pass": true
+    },
+    {
+      "name": "相位模糊由前导解出（bpsk/qpsk/16qam 全部对称旋转，无需真值）",
+      "value": 1,
+      "target": 1,
+      "pass": true
+    }
+  ],
+  "elapsed_s": 14.9
+}

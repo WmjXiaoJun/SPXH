@@ -1,0 +1,1420 @@
+{
+  "generator": "spxh-m0",
+  "created_at": "2026-10-05T11:29:23.383377+00:00",
+  "out_dir": "data\\demo",
+  "base_config": {
+    "symbol_rate": 1000.0,
+    "sps": 8,
+    "sample_rate": null,
+    "cfo_hz": 0.0,
+    "phase_noise_rms_rad": 0.0,
+    "phase_noise_bw_hz": null,
+    "rolloff": 0.35,
+    "span_symbols": 16,
+    "fsk_mod_index": null,
+    "payload_len": 64,
+    "num_frames": 8,
+    "iq_gain_db": 0.0,
+    "iq_phase_deg": 0.0,
+    "dc_offset": [
+      0.0,
+      0.0
+    ],
+    "keep_clean": true
+  },
+  "num_cases": 24,
+  "cases": [
+    {
+      "name": "bpsk_snr+0.0_000",
+      "prefix": "data\\demo\\bpsk_snr+0.0_000",
+      "files": {
+        "truth_json": "data\\demo\\bpsk_snr+0.0_000.truth.json",
+        "truth_npz": "data\\demo\\bpsk_snr+0.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\bpsk_snr+0.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\bpsk_snr+0.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "bpsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 0,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "bpsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 4648,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 37312,
+      "duration_s": 4.664
+    },
+    {
+      "name": "bpsk_snr+5.0_000",
+      "prefix": "data\\demo\\bpsk_snr+5.0_000",
+      "files": {
+        "truth_json": "data\\demo\\bpsk_snr+5.0_000.truth.json",
+        "truth_npz": "data\\demo\\bpsk_snr+5.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\bpsk_snr+5.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\bpsk_snr+5.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "bpsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 1,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "bpsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 4648,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 37312,
+      "duration_s": 4.664
+    },
+    {
+      "name": "bpsk_snr+10.0_000",
+      "prefix": "data\\demo\\bpsk_snr+10.0_000",
+      "files": {
+        "truth_json": "data\\demo\\bpsk_snr+10.0_000.truth.json",
+        "truth_npz": "data\\demo\\bpsk_snr+10.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\bpsk_snr+10.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\bpsk_snr+10.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "bpsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 2,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "bpsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 4648,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 37312,
+      "duration_s": 4.664
+    },
+    {
+      "name": "bpsk_snr+20.0_000",
+      "prefix": "data\\demo\\bpsk_snr+20.0_000",
+      "files": {
+        "truth_json": "data\\demo\\bpsk_snr+20.0_000.truth.json",
+        "truth_npz": "data\\demo\\bpsk_snr+20.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\bpsk_snr+20.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\bpsk_snr+20.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "bpsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 3,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "bpsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 4648,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 37312,
+      "duration_s": 4.664
+    },
+    {
+      "name": "qpsk_snr+0.0_000",
+      "prefix": "data\\demo\\qpsk_snr+0.0_000",
+      "files": {
+        "truth_json": "data\\demo\\qpsk_snr+0.0_000.truth.json",
+        "truth_npz": "data\\demo\\qpsk_snr+0.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\qpsk_snr+0.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\qpsk_snr+0.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "qpsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 4,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "qpsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 2324,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 18720,
+      "duration_s": 2.34
+    },
+    {
+      "name": "qpsk_snr+5.0_000",
+      "prefix": "data\\demo\\qpsk_snr+5.0_000",
+      "files": {
+        "truth_json": "data\\demo\\qpsk_snr+5.0_000.truth.json",
+        "truth_npz": "data\\demo\\qpsk_snr+5.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\qpsk_snr+5.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\qpsk_snr+5.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "qpsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 5,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "qpsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 2324,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 18720,
+      "duration_s": 2.34
+    },
+    {
+      "name": "qpsk_snr+10.0_000",
+      "prefix": "data\\demo\\qpsk_snr+10.0_000",
+      "files": {
+        "truth_json": "data\\demo\\qpsk_snr+10.0_000.truth.json",
+        "truth_npz": "data\\demo\\qpsk_snr+10.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\qpsk_snr+10.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\qpsk_snr+10.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "qpsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 6,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "qpsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 2324,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 18720,
+      "duration_s": 2.34
+    },
+    {
+      "name": "qpsk_snr+20.0_000",
+      "prefix": "data\\demo\\qpsk_snr+20.0_000",
+      "files": {
+        "truth_json": "data\\demo\\qpsk_snr+20.0_000.truth.json",
+        "truth_npz": "data\\demo\\qpsk_snr+20.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\qpsk_snr+20.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\qpsk_snr+20.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "qpsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 7,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "qpsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 2324,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 18720,
+      "duration_s": 2.34
+    },
+    {
+      "name": "8psk_snr+0.0_000",
+      "prefix": "data\\demo\\8psk_snr+0.0_000",
+      "files": {
+        "truth_json": "data\\demo\\8psk_snr+0.0_000.truth.json",
+        "truth_npz": "data\\demo\\8psk_snr+0.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\8psk_snr+0.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\8psk_snr+0.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "8psk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 8,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "8psk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 1550,
+        "num_bits": 4650,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 12528,
+      "duration_s": 1.566
+    },
+    {
+      "name": "8psk_snr+5.0_000",
+      "prefix": "data\\demo\\8psk_snr+5.0_000",
+      "files": {
+        "truth_json": "data\\demo\\8psk_snr+5.0_000.truth.json",
+        "truth_npz": "data\\demo\\8psk_snr+5.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\8psk_snr+5.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\8psk_snr+5.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "8psk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 9,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "8psk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 1550,
+        "num_bits": 4650,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 12528,
+      "duration_s": 1.566
+    },
+    {
+      "name": "8psk_snr+10.0_000",
+      "prefix": "data\\demo\\8psk_snr+10.0_000",
+      "files": {
+        "truth_json": "data\\demo\\8psk_snr+10.0_000.truth.json",
+        "truth_npz": "data\\demo\\8psk_snr+10.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\8psk_snr+10.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\8psk_snr+10.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "8psk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 10,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "8psk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 1550,
+        "num_bits": 4650,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 12528,
+      "duration_s": 1.566
+    },
+    {
+      "name": "8psk_snr+20.0_000",
+      "prefix": "data\\demo\\8psk_snr+20.0_000",
+      "files": {
+        "truth_json": "data\\demo\\8psk_snr+20.0_000.truth.json",
+        "truth_npz": "data\\demo\\8psk_snr+20.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\8psk_snr+20.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\8psk_snr+20.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "8psk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 11,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "8psk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 1550,
+        "num_bits": 4650,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 12528,
+      "duration_s": 1.566
+    },
+    {
+      "name": "16qam_snr+0.0_000",
+      "prefix": "data\\demo\\16qam_snr+0.0_000",
+      "files": {
+        "truth_json": "data\\demo\\16qam_snr+0.0_000.truth.json",
+        "truth_npz": "data\\demo\\16qam_snr+0.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\16qam_snr+0.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\16qam_snr+0.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "16qam",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 12,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "16qam",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 1162,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 9424,
+      "duration_s": 1.178
+    },
+    {
+      "name": "16qam_snr+5.0_000",
+      "prefix": "data\\demo\\16qam_snr+5.0_000",
+      "files": {
+        "truth_json": "data\\demo\\16qam_snr+5.0_000.truth.json",
+        "truth_npz": "data\\demo\\16qam_snr+5.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\16qam_snr+5.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\16qam_snr+5.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "16qam",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 13,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "16qam",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 1162,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 9424,
+      "duration_s": 1.178
+    },
+    {
+      "name": "16qam_snr+10.0_000",
+      "prefix": "data\\demo\\16qam_snr+10.0_000",
+      "files": {
+        "truth_json": "data\\demo\\16qam_snr+10.0_000.truth.json",
+        "truth_npz": "data\\demo\\16qam_snr+10.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\16qam_snr+10.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\16qam_snr+10.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "16qam",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 14,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "16qam",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 1162,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 9424,
+      "duration_s": 1.178
+    },
+    {
+      "name": "16qam_snr+20.0_000",
+      "prefix": "data\\demo\\16qam_snr+20.0_000",
+      "files": {
+        "truth_json": "data\\demo\\16qam_snr+20.0_000.truth.json",
+        "truth_npz": "data\\demo\\16qam_snr+20.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\16qam_snr+20.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\16qam_snr+20.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "16qam",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 15,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "16qam",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 1162,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": true,
+          "tone_hz": false,
+          "clean": true
+        }
+      },
+      "num_samples": 9424,
+      "duration_s": 1.178
+    },
+    {
+      "name": "2fsk_snr+0.0_000",
+      "prefix": "data\\demo\\2fsk_snr+0.0_000",
+      "files": {
+        "truth_json": "data\\demo\\2fsk_snr+0.0_000.truth.json",
+        "truth_npz": "data\\demo\\2fsk_snr+0.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\2fsk_snr+0.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\2fsk_snr+0.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "2fsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 16,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "2fsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 4648,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": false,
+          "tone_hz": true,
+          "clean": true
+        }
+      },
+      "num_samples": 37184,
+      "duration_s": 4.648
+    },
+    {
+      "name": "2fsk_snr+5.0_000",
+      "prefix": "data\\demo\\2fsk_snr+5.0_000",
+      "files": {
+        "truth_json": "data\\demo\\2fsk_snr+5.0_000.truth.json",
+        "truth_npz": "data\\demo\\2fsk_snr+5.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\2fsk_snr+5.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\2fsk_snr+5.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "2fsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 17,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "2fsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 4648,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": false,
+          "tone_hz": true,
+          "clean": true
+        }
+      },
+      "num_samples": 37184,
+      "duration_s": 4.648
+    },
+    {
+      "name": "2fsk_snr+10.0_000",
+      "prefix": "data\\demo\\2fsk_snr+10.0_000",
+      "files": {
+        "truth_json": "data\\demo\\2fsk_snr+10.0_000.truth.json",
+        "truth_npz": "data\\demo\\2fsk_snr+10.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\2fsk_snr+10.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\2fsk_snr+10.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "2fsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 18,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "2fsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 4648,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": false,
+          "tone_hz": true,
+          "clean": true
+        }
+      },
+      "num_samples": 37184,
+      "duration_s": 4.648
+    },
+    {
+      "name": "2fsk_snr+20.0_000",
+      "prefix": "data\\demo\\2fsk_snr+20.0_000",
+      "files": {
+        "truth_json": "data\\demo\\2fsk_snr+20.0_000.truth.json",
+        "truth_npz": "data\\demo\\2fsk_snr+20.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\2fsk_snr+20.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\2fsk_snr+20.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "2fsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 19,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "2fsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 4648,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": false,
+          "tone_hz": true,
+          "clean": true
+        }
+      },
+      "num_samples": 37184,
+      "duration_s": 4.648
+    },
+    {
+      "name": "4fsk_snr+0.0_000",
+      "prefix": "data\\demo\\4fsk_snr+0.0_000",
+      "files": {
+        "truth_json": "data\\demo\\4fsk_snr+0.0_000.truth.json",
+        "truth_npz": "data\\demo\\4fsk_snr+0.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\4fsk_snr+0.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\4fsk_snr+0.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "4fsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 20,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "4fsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 0.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 2324,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": false,
+          "tone_hz": true,
+          "clean": true
+        }
+      },
+      "num_samples": 18592,
+      "duration_s": 2.324
+    },
+    {
+      "name": "4fsk_snr+5.0_000",
+      "prefix": "data\\demo\\4fsk_snr+5.0_000",
+      "files": {
+        "truth_json": "data\\demo\\4fsk_snr+5.0_000.truth.json",
+        "truth_npz": "data\\demo\\4fsk_snr+5.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\4fsk_snr+5.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\4fsk_snr+5.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "4fsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 21,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "4fsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 5.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 2324,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": false,
+          "tone_hz": true,
+          "clean": true
+        }
+      },
+      "num_samples": 18592,
+      "duration_s": 2.324
+    },
+    {
+      "name": "4fsk_snr+10.0_000",
+      "prefix": "data\\demo\\4fsk_snr+10.0_000",
+      "files": {
+        "truth_json": "data\\demo\\4fsk_snr+10.0_000.truth.json",
+        "truth_npz": "data\\demo\\4fsk_snr+10.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\4fsk_snr+10.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\4fsk_snr+10.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "4fsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 22,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "4fsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 10.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 2324,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": false,
+          "tone_hz": true,
+          "clean": true
+        }
+      },
+      "num_samples": 18592,
+      "duration_s": 2.324
+    },
+    {
+      "name": "4fsk_snr+20.0_000",
+      "prefix": "data\\demo\\4fsk_snr+20.0_000",
+      "files": {
+        "truth_json": "data\\demo\\4fsk_snr+20.0_000.truth.json",
+        "truth_npz": "data\\demo\\4fsk_snr+20.0_000.truth.npz",
+        "sigmf_meta": "data\\demo\\4fsk_snr+20.0_000.sigmf-meta",
+        "sigmf_data": "data\\demo\\4fsk_snr+20.0_000.sigmf-data"
+      },
+      "config": {
+        "modulation": "4fsk",
+        "symbol_rate": 1000.0,
+        "sps": 8,
+        "sample_rate": null,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "phase_noise_rms_rad": 0.0,
+        "phase_noise_bw_hz": null,
+        "rolloff": 0.35,
+        "span_symbols": 16,
+        "fsk_mod_index": null,
+        "payload_len": 64,
+        "num_frames": 8,
+        "payloads": null,
+        "fec": "none",
+        "interleave": false,
+        "iq_gain_db": 0.0,
+        "iq_phase_deg": 0.0,
+        "dc_offset": [
+          0.0,
+          0.0
+        ],
+        "seed": 23,
+        "keep_clean": true,
+        "sample_rate_effective": 8000.0
+      },
+      "truth": {
+        "modulation": "4fsk",
+        "symbol_rate": 1000.0,
+        "sample_rate": 8000.0,
+        "sps": 8,
+        "snr_db": 20.0,
+        "cfo_hz": 0.0,
+        "num_symbols": 2324,
+        "num_bits": 4648,
+        "num_frames": 8,
+        "payload_bytes": 512,
+        "has_arrays": {
+          "bits": true,
+          "symbol_indices": true,
+          "symbols": false,
+          "tone_hz": true,
+          "clean": true
+        }
+      },
+      "num_samples": 18592,
+      "duration_s": 2.324
+    }
+  ]
+}

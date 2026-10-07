@@ -1,0 +1,5 @@
+{
+  "auth_required": false,
+  "loopback_only": true,
+  "hint": "当前仅监听回环地址且未设置令牌：本机单人使用不需要令牌"
+}
